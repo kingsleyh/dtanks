@@ -8,10 +8,6 @@ class Brain {
   //public Command command;
   private Arena arena;
 
-this(){
-
-}
-
   this(Arena arena){
     this.arena = arena;
   }

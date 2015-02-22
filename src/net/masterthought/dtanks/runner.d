@@ -9,16 +9,16 @@ class Runner {
   private Match match;
 
   this(int width, int height){
-     this.match = new Match(new Arena(width,height))
+     this.match = new Match(new Arena(width,height));
   }
 
-  public start(){
+  public void start(){
     this.match.start();
   }
 
-  public addBrainPath(string brainPath){
+  //public addBrainPath(string brainPath){
 
-  }
+  //}
 
 }
 
