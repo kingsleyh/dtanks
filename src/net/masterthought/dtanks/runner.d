@@ -1,25 +1,26 @@
-//module net.masterthought.dtanks.runner;
+module net.masterthought.dtanks.runner;
 
-//import net.masterthought.dtanks.match;
-//import net.masterthought.dtanks.arena;
+import net.masterthought.dtanks.match;
+import net.masterthought.dtanks.arena;
+import net.masterthought.dtanks.samples.superbot;
 
-//class Runner {
+class Runner {
 
-//  private Match match;
+  private Match match;
 
-//  this(int width, int height){
-//     this.match = new Match(new Arena(width,height))
-//  }
+  this(int width, int height){
+     this.match = new Match(new Arena(width,height))
+  }
 
-//  public start(){
-//    this.match.start();
-//  }
+  public start(){
+    this.match.start();
+  }
 
-//  public addBrainPath(string brainPath){
+  public addBrainPath(string brainPath){
 
-//  }
+  }
 
-//}
+}
 
 
 

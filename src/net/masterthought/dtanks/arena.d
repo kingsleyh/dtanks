@@ -1,6 +1,6 @@
-//module net.masterthought.dtanks.arena;
+module net.masterthought.dtanks.arena;
 
-//struct Arena{
-//   int width;
-//   int height;
-//}
+struct Arena{
+   int width;
+   int height;
+}

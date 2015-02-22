@@ -4,7 +4,7 @@ import net.masterthought.dtanks.bot.brain;
 
 class SuperBot : Brain {
 
-  public void tick(){
+  override public void tick(){
 
   }
 
