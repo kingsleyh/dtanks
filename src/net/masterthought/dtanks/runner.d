@@ -1,0 +1,28 @@
+//module net.masterthought.dtanks.runner;
+
+//import net.masterthought.dtanks.match;
+//import net.masterthought.dtanks.arena;
+
+//class Runner {
+
+//  private Match match;
+
+//  this(int width, int height){
+//     this.match = new Match(new Arena(width,height))
+//  }
+
+//  public start(){
+//    this.match.start();
+//  }
+
+//  public addBrainPath(string brainPath){
+
+//  }
+
+//}
+
+
+
+
+
+
