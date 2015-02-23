@@ -9,6 +9,7 @@ import net.masterthought.dtanks.match;
 class GuiWindow{
 
 private Match match;
+private GuiBot[] guiBots;
 
 this(Match match){
   this.match = match;
@@ -33,7 +34,11 @@ auto turretTexture = new Texture();
     if(!turretTexture.loadFromFile("resources/turret.png"))
         return;
 
-    GuiBot bot = new GuiBot(botBodyTexture,turretTexture,100,100);
+   foreach(bot ; this.match.bots){
+       guiBots ~= new GuiBot(botBodyTexture,turretTexture,bot.position.x,bot.position.y);
+   }
+
+    //GuiBot bot = new GuiBot(botBodyTexture,turretTexture,100,100);
 
      //GuiBot bot2 = new GuiBot(botBodyTexture,turretTexture,50,50);
 
@@ -65,7 +70,10 @@ auto texture = new Texture();
         window.clear();
 
 window.draw(sprite);
+
+foreach(bot ; guiBots){
  window.draw(bot);
+}
  //window.draw(bot2);
 
  //writeln(std.datetime.Clock.currTime());

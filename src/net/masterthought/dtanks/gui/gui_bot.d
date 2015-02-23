@@ -6,10 +6,10 @@ class GuiBot : Drawable {
 
 Texture botBodyTexture;
 Texture turretTexture;
-int x;
-int y;
+float x;
+float y;
 
-this(Texture botBodyTexture, Texture turretTexture, int x, int y){
+this(Texture botBodyTexture, Texture turretTexture, float x, float y){
  this.botBodyTexture = botBodyTexture;
  this.turretTexture = turretTexture;
  this.x = x;
@@ -22,7 +22,7 @@ this(Texture botBodyTexture, Texture turretTexture, int x, int y){
    botBody.position = Vector2f(x,y);
 
 auto turret = new Sprite(turretTexture);
-turret.position = Vector2f(y+8,x-8);
+turret.position = Vector2f(x+8,y-8);
 
    target.draw(botBody);
    target.draw(turret);

@@ -13,7 +13,7 @@ class Match {
  private bool teams;
  private int ticks;
  private bool stopped;
- private TickGroup bots;
+ public TickGroup bots;
 
  this(Arena arena){
     this.arena = arena;

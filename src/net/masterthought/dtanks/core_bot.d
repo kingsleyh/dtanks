@@ -23,7 +23,7 @@ class CoreBot {
 
   //private int speed;
   //private int heading;
-  private Point position;
+  public Point position;
   private string name;
 
   public string guiWindow;
