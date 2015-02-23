@@ -3,16 +3,19 @@ module net.masterthought.dtanks.point;
 import std.random;
 import std.math;
 import std.conv;
+import std.stdio;
 import net.masterthought.dtanks.arena;
 
 struct Point {
 
-  int x;
-  int y;
+  float x;
+  float y;
   Arena arena;
 
-  public Point rand(Arena arena){
-    return Point(uniform(0,arena.width),uniform(0,arena.height),arena);
+  public static Point rand(Arena arena){
+    Point p =  Point(uniform(0,arena.width),uniform(0,arena.height),arena);
+    writeln(p);
+    return p;
   }
 
   public float pointDistance(Point a, Point b){
@@ -56,8 +59,8 @@ public bool outsideArena(){
 }
 
 public Point move(float heading, int speed){
-  int x = (this.x + (sin(heading) * speed)).round(10);
-  int y = (this.y + (cos(heading) * speed)).round(10);
+  auto x = (this.x + (sin(heading) * speed));
+  auto y = (this.y + (cos(heading) * speed));
   Point point = Point(x,y,this.arena);
   point.bindToArena();
   return point;

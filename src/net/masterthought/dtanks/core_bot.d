@@ -28,10 +28,10 @@ class CoreBot {
 
   public string guiWindow;
 
-  this(Arena arena, string brainKlass){
+  this(Arena arena, Brain brain){
      this.arena = arena;
      //this.brain = new brainKlass(this.arena);
-     this.brain = new SuperBot(this.arena);
+     this.brain = brain;
      this.ticks = 0;
 
      this.position = Point(0, 0, this.arena);
@@ -42,6 +42,12 @@ class CoreBot {
 
      //this.radar = new Radar(this, this.heading.dup);
      //this.turret = new Turret(this.heading.dup);
+  }
+
+  public static CoreBot newRandomLocation(Arena arena, Brain brain){
+     CoreBot bot = new CoreBot(arena,brain);
+     bot.position = Point.rand(arena);
+     return bot;
   }
 
   public void setName(){

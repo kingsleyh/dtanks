@@ -15,12 +15,17 @@
 //   writeln(res);
 //}
 
-import net.masterthought.dtanks.guiwindow;
+//import net.masterthought.dtanks.guiwindow;
+
+import net.masterthought.dtanks.runner;
 
 void main(string[] args)
 {
 
-   GuiWindow gui = new GuiWindow();
-   gui.execute();
+Runner runner = new Runner(500,500);
+runner.start();
+
+   //GuiWindow gui = new GuiWindow();
+   //gui.execute();
 
 }

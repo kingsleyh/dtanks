@@ -1,6 +1,8 @@
 import std.stdio;
 import std.algorithm;
-
+import std.array;
+import std.random;
+import std.conv;
 
 class Foo {
 
@@ -14,34 +16,55 @@ class Foo {
     list ~= item;
   }
 
+ public void popFront(){
+  list.popFront();
+ }
 
-  int opApply(int delegate(ref string) dg){
+ public bool empty(){
+  return list.empty();
+ }
 
-int result = 0;
+ public string front(){
+  return list.front();
+ }
 
-        for (int i = 0; i < list.length; i++)
-        {
-            result = dg(list[i]);
-            if (result)
-                break;
-        }
-        return result;
-  }
+//  int opApply(int delegate(ref string) dg){
+
+//int result = 0;
+
+//        for (int i = 0; i < list.length; i++)
+//        {
+//            result = dg(list[i]);
+//            if (result)
+//                break;
+//        }
+//        return result;
+//  }
 
 }
 
 
 void main(){
 
-  writeln("hello");
-  Foo foo = new Foo();
-  foo.add("apple");
-  foo.add("cars");
+  writeln(uniform(0.0,100.0));
+
+ //string[] list = ["a","b"];
+
+ //list ~= ["c","d"];
+
+ //writeln(list);
+
+  //writeln("hello");
+  //Foo foo = new Foo();
+  //foo.add("apple");
+  //foo.add("cars");
 
 
-  foreach(n ; foo){
-    writeln(n);
-  }
+  ////foreach(n ; foo){
+  ////  writeln(n);
+  ////}
+
+  //writeln(foo.map!(n => "an " ~ n).array);
 
 
 }

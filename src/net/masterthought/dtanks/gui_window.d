@@ -4,8 +4,15 @@ import dsfml.graphics;
 import std.datetime;
 import std.stdio;
 import net.masterthought.dtanks.gui.guibot;
+import net.masterthought.dtanks.match;
 
 class GuiWindow{
+
+private Match match;
+
+this(Match match){
+  this.match = match;
+}
 
  public void execute(){
 

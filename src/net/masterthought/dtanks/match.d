@@ -4,9 +4,11 @@ import net.masterthought.dtanks.tickgroup;
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.arena;
 
+import std.stdio;
+
 class Match {
 
- private Arena arena;
+ public Arena arena;
  private int maxTicks;
  private bool teams;
  private int ticks;
@@ -29,17 +31,19 @@ class Match {
  }
 
  public bool finished(){
-  return this.stopped || this.maxTicksReached || this.bots.count <= 1 ||
-  (this.teams && this.bots.map!(n => n.name).array.sort.uniq.array.size ==1);
+
+  //return this.stopped || this.maxTicksReached || this.bots.count <= 1 ||
+  //(this.teams && this.bots.map!(n => n.name).array.sort.uniq.array.size ==1);
+  return true;
  }
 
- public void addBots(CoreBot...)(bots){
+ public void addBots(CoreBot[] bots){
     this.bots.add(bots);
  }
 
  public void start(){
    while(!this.finished){
-    this.tick;
+    this.incrementTicks();
    }
  }
 
