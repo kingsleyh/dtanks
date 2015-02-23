@@ -24,8 +24,15 @@ this(Texture botBodyTexture, Texture turretTexture, float x, float y){
 auto turret = new Sprite(turretTexture);
 turret.position = Vector2f(x+8,y-8);
 
+
+   //auto head = new CircleShape(100);
+   auto healthBar = new RectangleShape(Vector2f(100,3));
+    healthBar.fillColor = Color.Green;
+    healthBar.position = Vector2f(x-30,y+45);
+
    target.draw(botBody);
    target.draw(turret);
+   target.draw(healthBar);
 
    //auto texture = new Texture();
    // if(!texture.loadFromFile("resources/grass.png"))
