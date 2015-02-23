@@ -67,6 +67,8 @@ auto texture = new Texture();
         //  writeln("you pressed the RIGHT key");
         //}
 
+      this.match.incrementTicks();
+
         window.clear();
 
 window.draw(sprite);
