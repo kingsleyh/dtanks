@@ -58,7 +58,7 @@ public bool outsideArena(){
   return this.y > this.arena.height || this.y < 0 || this.x > this.arena.width || this.x < 0;
 }
 
-public Point move(float heading, int speed){
+public Point move(float heading, float speed){
   auto x = (this.x + (sin(heading) * speed));
   auto y = (this.y + (cos(heading) * speed));
   Point point = Point(x,y,this.arena);

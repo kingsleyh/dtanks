@@ -47,8 +47,8 @@ public static float deltaBetweenPoints(Point from, float fromHeading, Point to){
   return new Heading(fromHeading).delta(relativeHeading.radians);
 }
 
-public static float rand(){
-  return uniform(0.0,0.9) * FULL_ANGLE;
+public static Heading rand(){
+  return new Heading(uniform(0.0,0.9) * FULL_ANGLE);
 }
 
 this(float radians){

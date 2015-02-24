@@ -39,7 +39,7 @@ auto turretTexture = new Texture();
         return;
 
    foreach(bot ; this.match.bots){
-       guiBots ~= new GuiBot(botBodyTexture,turretTexture,font,bot.position.x,bot.position.y,bot.getName());
+       guiBots ~= new GuiBot(botBodyTexture,turretTexture,font,bot);
    }
 
     //GuiBot bot = new GuiBot(botBodyTexture,turretTexture,100,100);

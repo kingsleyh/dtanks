@@ -1,12 +1,12 @@
 module net.masterthought.dtanks.corebot;
 
 import net.masterthought.dtanks.arena;
-//import net.masterthought.dtanks.heading;
+import net.masterthought.dtanks.heading;
 
 import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.bot.brain;
 //import net.masterthought.dtanks.bot.radar;
-//import net.masterthought.dtanks.bot.turret;
+import net.masterthought.dtanks.bot.turret;
 
 import net.masterthought.dtanks.samples.superbot;
 
@@ -15,14 +15,14 @@ class CoreBot {
   private Arena arena;
   private Brain brain;
   //private Radar radar;
-  //private Turret turret;
+  public Turret turret;
   private int ticks;
   private int health;
   //private int firePower;
   //private int gunEnergy;
 
   //private int speed;
-  //private int heading;
+  public Heading heading;
   public Point position;
 
   public string guiWindow;
@@ -37,15 +37,17 @@ class CoreBot {
      this.health = 100;
      //this.speed = 0;
      //this.fire_power = void;
-     //this.heading  = new Heading();
+     this.heading  = new Heading();
 
      //this.radar = new Radar(this, this.heading.dup);
-     //this.turret = new Turret(this.heading.dup);
+     this.turret = new Turret(this.heading.clone());
   }
 
   public static CoreBot newRandomLocation(Arena arena, Brain brain){
      CoreBot bot = new CoreBot(arena,brain);
      bot.position = Point.rand(arena);
+     Heading randHeading = Heading.rand();
+     bot.heading = randHeading;
      return bot;
   }
 
