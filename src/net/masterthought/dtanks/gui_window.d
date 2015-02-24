@@ -9,7 +9,6 @@ import net.masterthought.dtanks.match;
 class GuiWindow{
 
 private Match match;
-//private GuiBot[] guiBots;
 
 this(Match match){
   this.match = match;
@@ -17,14 +16,8 @@ this(Match match){
 
  public void execute(){
 
- auto window = new RenderWindow(VideoMode(500,500),"Hello DSFML!");
+ auto window = new RenderWindow(VideoMode(match.arena.height,match.arena.width),"Hello DSFML!");
   window.setFramerateLimit(60);
-    //auto font = new Font();
-    //if(!font.loadFromFile("resources/arial.ttf"))
-    //    return;
-    //auto text = new Text("Hello DSFML", font, 50);
-    //text.position = Vector2f(52,51);
-    //text.rotation(10);
 
 auto botBodyTexture = new Texture();
     if(!botBodyTexture.loadFromFile("resources/body.png"))
@@ -37,14 +30,6 @@ auto turretTexture = new Texture();
        auto font = new Font();
     if(!font.loadFromFile("resources/arial.ttf"))
         return;
-
-   //foreach(bot ; this.match.bots){
-   //    guiBots ~= new GuiBot(botBodyTexture,turretTexture,font,bot);
-   //}
-
-    //GuiBot bot = new GuiBot(botBodyTexture,turretTexture,100,100);
-
-     //GuiBot bot2 = new GuiBot(botBodyTexture,turretTexture,50,50);
 
 auto texture = new Texture();
     if(!texture.loadFromFile("resources/grass.png"))
@@ -77,24 +62,10 @@ auto texture = new Texture();
 
 window.draw(sprite);
 
-//guiBots = [];
 
  foreach(bot ; this.match.bots){
        window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
    }
-
-//foreach(bot ; guiBots){
-// window.draw(bot);
-//}
- //window.draw(bot2);
-
- //writeln(std.datetime.Clock.currTime());
-
-        //window.draw(head);
-        //window.draw(leftEye);
-        //window.draw(rightEye);
-        //window.draw(smile);
-        //window.draw(smileCover);
 
         window.display();
     }

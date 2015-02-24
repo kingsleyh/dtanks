@@ -15,9 +15,9 @@ class SuperBot : Brain {
    }
 
   override public Command tick(Sensor sensors){
-    command.speed = 1;
-    command.heading = new Heading(Heading.N);
-    command.turretHeading = new Heading(Heading.S);
+    command.speed = 3;
+    command.heading = new Heading(Heading.NE);
+    command.turretHeading = new Heading(Heading.N);
     return command;
   }
 
