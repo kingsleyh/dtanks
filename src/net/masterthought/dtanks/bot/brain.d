@@ -29,6 +29,10 @@ class Brain {
 
   }
 
+  public dstring name(){
+    return "no name";
+  }
+
 }
 
 

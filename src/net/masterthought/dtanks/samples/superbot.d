@@ -13,4 +13,8 @@ class SuperBot : Brain {
 
   }
 
+  override public dstring name(){
+    return "SuperBot";
+  }
+
 }

@@ -24,7 +24,6 @@ class CoreBot {
   //private int speed;
   //private int heading;
   public Point position;
-  private string name;
 
   public string guiWindow;
 
@@ -50,8 +49,8 @@ class CoreBot {
      return bot;
   }
 
-  public void setName(){
-    this.name = "super name";
+  public dstring getName(){
+    return this.brain.name();
   }
 
   public void setHealth(int value){

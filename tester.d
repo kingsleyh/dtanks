@@ -3,6 +3,8 @@ import std.algorithm;
 import std.array;
 import std.random;
 import std.conv;
+import std.math;
+import std.range;
 
 class Foo {
 
@@ -43,10 +45,34 @@ class Foo {
 
 }
 
+class Woo{
+
+  //static const string NAME = "apples";
+
+enum FULL_ANGLE = PI * 2.0;
+enum HALF_ANGLE = PI;
+enum EIGHTH_ANGLE = PI / 4.0;
+enum ONE_DEGREE = FULL_ANGLE / 360.0;
+enum FULL_RANGE =  iota(0,FULL_ANGLE);
+
+enum NORTH = 0.0;
+alias NORTH N;
+
+}
 
 void main(){
 
-  writeln(uniform(0.0,100.0));
+
+
+
+writeln(uniform(0.0,0.9) * Woo.FULL_ANGLE);
+
+  //writeln(uniform(0.0,100.0));
+
+//string a = "hello";
+//dstring b = to!dstring(a);
+
+//writeln(b);
 
  //string[] list = ["a","b"];
 

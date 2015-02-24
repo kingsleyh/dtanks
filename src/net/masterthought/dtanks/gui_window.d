@@ -34,8 +34,12 @@ auto turretTexture = new Texture();
     if(!turretTexture.loadFromFile("resources/turret.png"))
         return;
 
+       auto font = new Font();
+    if(!font.loadFromFile("resources/arial.ttf"))
+        return;
+
    foreach(bot ; this.match.bots){
-       guiBots ~= new GuiBot(botBodyTexture,turretTexture,bot.position.x,bot.position.y);
+       guiBots ~= new GuiBot(botBodyTexture,turretTexture,font,bot.position.x,bot.position.y,bot.getName());
    }
 
     //GuiBot bot = new GuiBot(botBodyTexture,turretTexture,100,100);
