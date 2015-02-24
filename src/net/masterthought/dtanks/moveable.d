@@ -31,15 +31,15 @@ public bool boundToArena(){
 }
 
 public void updatePosition(){
-  this.position = this.position.move(this.heading.radians,this.speed);
+  this.position = this.position.move(getHeading().radians,this.speed);
 }
 
 public Heading getHeading(){
   return this.heading;
 }
 
-public void setHeading(float heading){
-  this.heading = new Heading(heading);
+public void setHeading(float theHeading){
+  this.heading = new Heading(theHeading);
 }
 
 public float getSpeed(){

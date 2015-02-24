@@ -13,7 +13,7 @@ enum FULL_ANGLE = PI * 2.0;
 enum HALF_ANGLE = PI;
 enum EIGHTH_ANGLE = PI / 4.0;
 enum ONE_DEGREE = FULL_ANGLE / 360.0;
-enum FULL_RANGE =  iota(0,FULL_ANGLE);
+enum FULL_RANGE =  iota(0.0,FULL_ANGLE);
 
 enum NORTH = 0.0;
 alias NORTH N;

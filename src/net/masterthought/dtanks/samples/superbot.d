@@ -20,7 +20,7 @@ class SuperBot : Brain {
     //command.speed = 3;
     //command.heading = new Heading(Heading.NE);
     //command.turretHeading = new Heading(Heading.N);
-    
+
     writeln(sensors);
 
     if(sensors.buttonDown(Keyboard.Key.Left)){

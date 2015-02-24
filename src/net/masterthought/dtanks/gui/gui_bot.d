@@ -29,8 +29,8 @@ this(Texture botBodyTexture, Texture turretTexture, Font font, CoreBot bot){
   auto botBody = new Sprite(botBodyTexture);
    botBody.position = Vector2f(x,y);
    botBody.origin(Vector2f(18,19));
-   botBody.rotation(-this.bot.heading.toDegrees());
-  
+   botBody.rotation(this.bot.getHeading().toDegrees());
+
 
 auto turret = new Sprite(turretTexture);
 turret.position = Vector2f(x,y);
@@ -45,13 +45,30 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
 
     auto botName = new Text(name, font, 12);
     botName.position = Vector2f(x-50,y+45);
-    //text.rotation(10);
+
+    // DEBUG
+    auto posX = new Text("X: " ~ to!dstring(x),font,12);
+    posX.position = Vector2f(x-50,y+60);
+
+    auto posY = new Text("Y: " ~ to!dstring(y),font,12);
+    posY.position = Vector2f(x-50,y+73);
+
+     auto dHeading = new Text("H: " ~ to!dstring(-bot.heading.toDegrees()),font,12);
+    dHeading.position = Vector2f(x-50,y+86);
+
+ auto tHeading = new Text("T: " ~ to!dstring(bot.turret.getHeading.toDegrees()),font,12);
+    tHeading.position = Vector2f(x-50,y+99);
+
 
    target.draw(botName);
    target.draw(botBody);
    target.draw(turret);
    target.draw(healthBar);
 
+   target.draw(posX);
+   target.draw(posY);
+   target.draw(dHeading);
+   target.draw(tHeading);
 
    //auto texture = new Texture();
    // if(!texture.loadFromFile("resources/grass.png"))
