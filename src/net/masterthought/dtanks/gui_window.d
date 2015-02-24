@@ -18,7 +18,7 @@ this(Match match){
  public void execute(){
 
  auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"Hello DSFML!");
-  //window.setFramerateLimit(60);
+  window.setFramerateLimit(60);
 
 auto botBodyTexture = new Texture();
     if(!botBodyTexture.loadFromFile("resources/body.png"))

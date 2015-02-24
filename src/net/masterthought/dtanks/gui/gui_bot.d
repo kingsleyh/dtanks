@@ -29,7 +29,7 @@ this(Texture botBodyTexture, Texture turretTexture, Font font, CoreBot bot){
   auto botBody = new Sprite(botBodyTexture);
    botBody.position = Vector2f(x,y);
    botBody.origin(Vector2f(18,19));
-   botBody.rotation(this.bot.heading.toDegrees());
+   botBody.rotation(-this.bot.heading.toDegrees());
   
 
 auto turret = new Sprite(turretTexture);
