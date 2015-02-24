@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hendriki/stuff/dtanks/from_source/DSFML-C/src/SFML/Window/OSX/SFApplication.h
+Foundation/Foundation.h
+-
+
+/Users/hendriki/stuff/dtanks/from_source/DSFML-C/src/SFML/Window/OSX/SFApplication.m
+SFML/Window/OSX/SFApplication.h
+-
+AppKit/AppKit.h
+-
+
+/Users/hendriki/stuff/dtanks/from_source/DSFML-C/src/SFML/Window/OSX/SFWindow.h
+AppKit/AppKit.h
+-
+
+/Users/hendriki/stuff/dtanks/from_source/DSFML-C/src/SFML/Window/OSX/SFWindow.m
+SFWindow.h
+/Users/hendriki/stuff/dtanks/from_source/DSFML-C/src/SFML/Window/OSX/SFWindow.h
+

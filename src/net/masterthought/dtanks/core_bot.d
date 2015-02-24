@@ -13,6 +13,8 @@ import net.masterthought.dtanks.bot.command;
 
 import net.masterthought.dtanks.samples.superbot;
 
+import std.stdio;
+
 class CoreBot {
 
   private Arena arena;
@@ -24,7 +26,7 @@ class CoreBot {
   //private int firePower;
   //private int gunEnergy;
 
-  //private int speed;
+  private float speed;
   public Heading heading;
   public Point position;
 
@@ -38,13 +40,15 @@ class CoreBot {
 
      this.position = Point(0, 0, this.arena);
      this.health = 100;
-     //this.speed = 0;
+     this.speed = 0;
      //this.fire_power = void;
      this.heading  = new Heading();
 
      //this.radar = new Radar(this, this.heading.dup);
      this.turret = new Turret(this.heading.clone());
   }
+
+
 
   public static CoreBot newRandomLocation(Arena arena, Brain brain){
      CoreBot bot = new CoreBot(arena,brain);
@@ -93,18 +97,26 @@ class CoreBot {
   }
 
   public void tick(){
+    writeln("ticking in corebot");
     this.ticks += 1;
     this.tickBrain();
+    writeln("before pos: ", this.position);
+    this.position = this.position.move(this.heading.radians,this.speed);
+    writeln("after pos: ", this.position);
     //this.adjustFirePower;
   }
 
   public void tickBrain(){
+    writeln("ticking in tick brain");
     executeCommand(brain.tick(sensors()));
   }
 
   public void executeCommand(Command command){
+    writeln("executing command");
     this.heading = command.heading;
     this.turret.setHeading(command.turretHeading.radians);
+    this.speed = command.speed;
+    writeln("executed the command");
   }
 
   public Sensor sensors(){

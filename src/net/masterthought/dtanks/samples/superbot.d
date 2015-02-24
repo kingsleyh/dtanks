@@ -6,6 +6,8 @@ import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 import net.masterthought.dtanks.heading;
 
+import std.random;
+
 class SuperBot : Brain {
 
    this(Arena arena){
@@ -13,8 +15,9 @@ class SuperBot : Brain {
    }
 
   override public Command tick(Sensor sensors){
-    command.speed = 10;
-    command.heading = new Heading(Heading.ONE_DEGREE * 10);
+    command.speed = 1;
+    command.heading = new Heading(Heading.N);
+    command.turretHeading = new Heading(Heading.S);
     return command;
   }
 

@@ -9,7 +9,7 @@ import net.masterthought.dtanks.match;
 class GuiWindow{
 
 private Match match;
-private GuiBot[] guiBots;
+//private GuiBot[] guiBots;
 
 this(Match match){
   this.match = match;
@@ -17,8 +17,8 @@ this(Match match){
 
  public void execute(){
 
- auto window = new RenderWindow(VideoMode(800,600),"Hello DSFML!");
-
+ auto window = new RenderWindow(VideoMode(500,500),"Hello DSFML!");
+  window.setFramerateLimit(60);
     //auto font = new Font();
     //if(!font.loadFromFile("resources/arial.ttf"))
     //    return;
@@ -38,9 +38,9 @@ auto turretTexture = new Texture();
     if(!font.loadFromFile("resources/arial.ttf"))
         return;
 
-   foreach(bot ; this.match.bots){
-       guiBots ~= new GuiBot(botBodyTexture,turretTexture,font,bot);
-   }
+   //foreach(bot ; this.match.bots){
+   //    guiBots ~= new GuiBot(botBodyTexture,turretTexture,font,bot);
+   //}
 
     //GuiBot bot = new GuiBot(botBodyTexture,turretTexture,100,100);
 
@@ -77,9 +77,15 @@ auto texture = new Texture();
 
 window.draw(sprite);
 
-foreach(bot ; guiBots){
- window.draw(bot);
-}
+//guiBots = [];
+
+ foreach(bot ; this.match.bots){
+       window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
+   }
+
+//foreach(bot ; guiBots){
+// window.draw(bot);
+//}
  //window.draw(bot2);
 
  //writeln(std.datetime.Clock.currTime());

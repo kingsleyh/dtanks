@@ -3,6 +3,7 @@
 	"description": "A minimal D application.",
 	"copyright": "Copyright © 2015, kings",
 	"authors": ["kings"],
+	"lflags" : ["-L/Users/hendriki/stuff/dtanks/DSFML-Current/lib"],
 	"dependencies": {
           "dsfml:graphics": "~master"
 	}

@@ -5,7 +5,7 @@ import std.array;
 import std.range;
 import net.masterthought.dtanks.corebot;
 
-
+import std.stdio;
 
 //you need to implement three methods: empty, popFront, and front. empty returns bool telling if it is empty or not. front returns the current element. popFront advances to the next element
 // dont need opApply if using those three;
@@ -14,12 +14,16 @@ class TickGroup {
 
   CoreBot[] list;
 
+
   this(){
     list = [];
   }
 
   public void add(CoreBot[] bots){
-    list ~= bots;
+     list ~= bots;
+
+     //writeln("the list:");
+     //writeln(list);
   }
 
   public ulong count(){
@@ -27,35 +31,39 @@ class TickGroup {
   }
 
   public void tick(){
+    writeln("starting bot tick");
     foreach(bot ; list){
+      writeln("ticking for bot");
       bot.tick();
     }
   }
 
-  public bool empty(){
-    return list.empty();
+  //public bool empty(){
+  //  return list.empty();
+  //}
+
+  //public void popFront(){
+     
+  //  list.popFront();
+  //  list = origList;
+  //}
+
+  //public CoreBot front(){
+  //  return list.front();
+  //}
+
+  int opApply(int delegate(ref CoreBot) dg){
+
+int result = 0;
+
+        for (int i = 0; i < list.length; i++)
+        {
+            result = dg(list[i]);
+            if (result)
+                break;
+        }
+        return result;
   }
-
-  public void popFront(){
-    list.popFront();
-  }
-
-  public CoreBot front(){
-    return list.front();
-  }
-
-//  int opApply(int delegate(ref string) dg){
-
-//int result = 0;
-
-//        for (int i = 0; i < list.length; i++)
-//        {
-//            result = dg(list[i]);
-//            if (result)
-//                break;
-//        }
-//        return result;
-//  }
 
 }
 

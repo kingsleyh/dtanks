@@ -59,10 +59,15 @@ public bool outsideArena(){
 }
 
 public Point move(float heading, float speed){
+  writeln("running MOVE");
+  writeln("heading: ",heading);
+  writeln("speed: ", speed);
   auto x = (this.x + (sin(heading) * speed));
   auto y = (this.y + (cos(heading) * speed));
+
   Point point = Point(x,y,this.arena);
   point.bindToArena();
+  writeln("x: ", x," y: ",y);
   return point;
 }
 

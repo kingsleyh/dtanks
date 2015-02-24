@@ -1,0 +1,1 @@
+/usr/bin/clang++  -stdlib=libc++ -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -dynamiclib -Wl,-headerpad_max_install_names  -o SFML.framework/Versions/2.0.0/SFML -install_name @executable_path/../Frameworks/SFML.framework/Versions/2.0.0/SFML CMakeFiles/SFML.dir/dummy.cpp.o 

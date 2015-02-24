@@ -52,6 +52,7 @@ class Match {
  }
 
  public void incrementTicks(){
+  writeln("ticking");
   this.bots.tick();
   this.ticks += 1;
  }

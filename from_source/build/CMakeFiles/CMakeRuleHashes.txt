@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+a1f947dcb1edf03ea1fac0b6324aeecf dummy.cpp
