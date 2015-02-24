@@ -22,7 +22,7 @@ import net.masterthought.dtanks.runner;
 void main(string[] args)
 {
 
-Runner runner = new Runner(500,500);
+Runner runner = new Runner(1200,700);
 runner.start();
 
    //GuiWindow gui = new GuiWindow();

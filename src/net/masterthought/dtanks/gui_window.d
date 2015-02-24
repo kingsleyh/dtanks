@@ -10,14 +10,15 @@ class GuiWindow{
 
 private Match match;
 
+
 this(Match match){
   this.match = match;
 }
 
  public void execute(){
 
- auto window = new RenderWindow(VideoMode(match.arena.height,match.arena.width),"Hello DSFML!");
-  window.setFramerateLimit(60);
+ auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"Hello DSFML!");
+  //window.setFramerateLimit(60);
 
 auto botBodyTexture = new Texture();
     if(!botBodyTexture.loadFromFile("resources/body.png"))
@@ -64,6 +65,7 @@ window.draw(sprite);
 
 
  foreach(bot ; this.match.bots){
+       bot.setGuiWindow(window);
        window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
    }
 

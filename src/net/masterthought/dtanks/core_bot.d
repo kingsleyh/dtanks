@@ -13,7 +13,11 @@ import net.masterthought.dtanks.bot.command;
 
 import net.masterthought.dtanks.samples.superbot;
 
+import dsfml.graphics;
+
 import std.stdio;
+import core.thread;
+import std.math;
 
 class CoreBot {
 
@@ -30,7 +34,7 @@ class CoreBot {
   public Heading heading;
   public Point position;
 
-  public string guiWindow;
+  public Window guiWindow;
 
   this(Arena arena, Brain brain){
      this.arena = arena;
@@ -55,6 +59,8 @@ class CoreBot {
      bot.position = Point.rand(arena);
      Heading randHeading = Heading.rand();
      bot.heading = randHeading;
+     bot.turret.setHeading(randHeading.radians);
+     //core.thread.Thread.sleep( dur!("seconds")( 10 ) ); 
      return bot;
   }
 
@@ -106,6 +112,10 @@ class CoreBot {
     //this.adjustFirePower;
   }
 
+  public void setGuiWindow(Window window){
+    this.guiWindow = window;
+  }
+
   public void tickBrain(){
     writeln("ticking in tick brain");
     executeCommand(brain.tick(sensors()));
@@ -113,14 +123,22 @@ class CoreBot {
 
   public void executeCommand(Command command){
     writeln("executing command");
-    this.heading = command.heading;
+    writeln(command);
+    if(command.heading){
+      writeln("in the heading");
+       this.heading = command.heading;
+     }
+     if(command.turretHeading){
     this.turret.setHeading(command.turretHeading.radians);
+     }
+     if(!isNaN(command.speed)){
     this.speed = command.speed;
+  }
     writeln("executed the command");
   }
 
   public Sensor sensors(){
-    return Sensor(this.ticks,this.health,this.position,this.heading,this.turret.getHeading());
+    return Sensor(this.ticks,this.health,this.speed,this.position,this.heading,this.turret.getHeading(),this.guiWindow);
   }
 
 

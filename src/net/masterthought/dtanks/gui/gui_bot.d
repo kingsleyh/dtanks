@@ -30,11 +30,13 @@ this(Texture botBodyTexture, Texture turretTexture, Font font, CoreBot bot){
    botBody.position = Vector2f(x,y);
    botBody.origin(Vector2f(18,19));
    botBody.rotation(this.bot.heading.toDegrees());
+  
 
 auto turret = new Sprite(turretTexture);
 turret.position = Vector2f(x,y);
 turret.origin(Vector2f(10,27));
 turret.rotation(this.bot.turret.getHeading().toDegrees());
+
 
    auto healthBar = new RectangleShape(Vector2f(100,3));
     healthBar.fillColor = Color.Green;
