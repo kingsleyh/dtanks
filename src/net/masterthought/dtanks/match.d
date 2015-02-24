@@ -34,7 +34,7 @@ class Match {
 
   //return this.stopped || this.maxTicksReached || this.bots.count <= 1 ||
   //(this.teams && this.bots.map!(n => n.name).array.sort.uniq.array.size ==1);
-  return true;
+  return false;
  }
 
  public void addBots(CoreBot[] bots){
@@ -52,6 +52,7 @@ class Match {
  }
 
  public void incrementTicks(){
+  this.bots.tick();
   this.ticks += 1;
  }
 

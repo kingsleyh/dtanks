@@ -1,11 +1,13 @@
 module net.masterthought.dtanks.bot.brain;
 
 import net.masterthought.dtanks.arena;
+import net.masterthought.dtanks.bot.sensor;
+import net.masterthought.dtanks.bot.command;
 
 class Brain {
 
-  //public Sensor[] sensors;
-  //public Command command;
+  public Sensor sensors;
+  public Command command;
   private Arena arena;
 
   this(Arena arena){
@@ -25,8 +27,8 @@ class Brain {
   //  new Command(t)
   //}
 
-  public void tick(){
-
+  public Command tick(Sensor sensors){
+     return command;
   }
 
   public dstring name(){

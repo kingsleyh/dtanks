@@ -8,6 +8,9 @@ import net.masterthought.dtanks.bot.brain;
 //import net.masterthought.dtanks.bot.radar;
 import net.masterthought.dtanks.bot.turret;
 
+import net.masterthought.dtanks.bot.sensor;
+import net.masterthought.dtanks.bot.command;
+
 import net.masterthought.dtanks.samples.superbot;
 
 class CoreBot {
@@ -91,13 +94,22 @@ class CoreBot {
 
   public void tick(){
     this.ticks += 1;
-    //this.tickBrain;
+    this.tickBrain();
     //this.adjustFirePower;
   }
 
-  //public Sensor sensors(){
-  //  return Sensor(this.ticks,this.health,this.position)
-  //}
+  public void tickBrain(){
+    executeCommand(brain.tick(sensors()));
+  }
+
+  public void executeCommand(Command command){
+    this.heading = command.heading;
+    this.turret.setHeading(command.turretHeading.radians);
+  }
+
+  public Sensor sensors(){
+    return Sensor(this.ticks,this.health,this.position,this.heading,this.turret.getHeading());
+  }
 
 
 }
