@@ -13,7 +13,7 @@ import net.masterthought.dtanks.bot.command;
 
 import net.masterthought.dtanks.samples.superbot;
 
-import net.masterthought.dtanks.moveable;
+//import net.masterthought.dtanks.moveable;
 
 import dsfml.graphics;
 
@@ -54,13 +54,13 @@ class CoreBot {
      this.turret = new Turret(this.heading.clone());
   }
 
- mixin Moveable;
+ //mixin Moveable;
 
   public static CoreBot newRandomLocation(Arena arena, Brain brain){
      CoreBot bot = new CoreBot(arena,brain);
      bot.position = Point.rand(arena);
      Heading randHeading = Heading.rand();
-     bot.setHeading(randHeading.radians);
+     bot.heading = randHeading;
      bot.turret.setHeading(randHeading.radians);
      //core.thread.Thread.sleep( dur!("seconds")( 10 ) );
      return bot;
@@ -109,7 +109,8 @@ class CoreBot {
     this.ticks += 1;
     this.tickBrain();
     writeln("before pos: ", this.position);
-    this.position = this.position.move(getHeading().radians,this.speed);
+    //updatePosition();
+    this.position = this.position.move(this.heading.radians,this.speed);
     writeln("after pos: ", this.position);
     //this.adjustFirePower;
   }
@@ -140,14 +141,14 @@ class CoreBot {
   }
 
   public Sensor sensors(){
-    writeln("heading before sensor is: ", getHeading().radians);
+    writeln("heading before sensor is: ", this.heading.radians);
       writeln("turret before sensor is: ", turret.getHeading().radians);
     Sensor sensor = Sensor();
     sensor.ticks = ticks;
     sensor.health  = health;
     sensor.speed = speed;
     sensor.position = position;
-    sensor.heading = getHeading();
+    sensor.heading = this.heading;
     sensor.turretHeading = turret.getHeading();
     sensor.guiWindow = guiWindow;
     return sensor;

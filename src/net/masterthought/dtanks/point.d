@@ -13,8 +13,10 @@ struct Point {
   Arena arena;
 
   public static Point rand(Arena arena){
-    Point p =  Point(uniform(0,arena.width),uniform(0,arena.height),arena);
-    writeln(p);
+    Point p =  Point();
+    p.x = uniform(0,arena.width);
+    p.y = uniform(0,arena.height);
+    p.arena = arena;
     return p;
   }
 
@@ -35,11 +37,11 @@ struct Point {
  }
 
  public bool onTopWall(){
-  return this.y >= this.arena.height;
+  return this.y <= 0;
  }
 
 public bool onBottomWall(){
-  return this.y <= 0;
+  return this.y <= this.arena.height;
 }
 
 public bool onLeftWall(){
@@ -62,10 +64,13 @@ public Point move(float heading, float speed){
   writeln("running MOVE");
   writeln("heading: ",heading);
   writeln("speed: ", speed);
-  auto x = (this.x + (sin(heading) * speed));
-  auto y = (this.y + (cos(heading) * speed));
+  auto x = round((this.x - (sin(-heading) * speed)));
+  auto y = round((this.y - (cos(-heading) * speed)));
 
-  Point point = Point(x,y,this.arena);
+  Point point = Point();
+  point.x = x;
+  point.y = y;
+  point.arena = this.arena;
   point.bindToArena();
   writeln("x: ", x," y: ",y);
   return point;

@@ -7,6 +7,7 @@ import net.masterthought.dtanks.bot.brain;
 
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.samples.superbot;
+import net.masterthought.dtanks.samples.basicbot;
 
 class Runner {
 
@@ -27,7 +28,7 @@ addBots();
   }
 
   public void addBots(){
-    Brain[] brains = [new SuperBot(this.match.arena)];
+    Brain[] brains = [new SuperBot(this.match.arena),new BasicBot(this.match.arena)];
     CoreBot[] bots = [];
     foreach(brain ; brains){
        bots ~= CoreBot.newRandomLocation(this.match.arena, brain);

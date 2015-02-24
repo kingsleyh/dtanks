@@ -22,8 +22,8 @@ public Point getPosition(){
   return position;
 }
 
-public void setPosition(Point position){
-  this.position = position;
+public void setPosition(Point thePosition){
+  this.position = thePosition;
 }
 
 public bool boundToArena(){

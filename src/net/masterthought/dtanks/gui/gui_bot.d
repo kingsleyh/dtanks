@@ -29,7 +29,7 @@ this(Texture botBodyTexture, Texture turretTexture, Font font, CoreBot bot){
   auto botBody = new Sprite(botBodyTexture);
    botBody.position = Vector2f(x,y);
    botBody.origin(Vector2f(18,19));
-   botBody.rotation(this.bot.getHeading().toDegrees());
+   botBody.rotation(this.bot.heading.toDegrees());
 
 
 auto turret = new Sprite(turretTexture);
@@ -53,7 +53,7 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
     auto posY = new Text("Y: " ~ to!dstring(y),font,12);
     posY.position = Vector2f(x-50,y+73);
 
-     auto dHeading = new Text("H: " ~ to!dstring(-bot.heading.toDegrees()),font,12);
+     auto dHeading = new Text("H: " ~ to!dstring(bot.heading.toDegrees()),font,12);
     dHeading.position = Vector2f(x-50,y+86);
 
  auto tHeading = new Text("T: " ~ to!dstring(bot.turret.getHeading.toDegrees()),font,12);
