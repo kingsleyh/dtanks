@@ -60,7 +60,7 @@ public bool outsideArena(){
   return this.y > this.arena.height || this.y < 0 || this.x > this.arena.width || this.x < 0;
 }
 
-public Point move(float heading, float speed){
+public Point move(float heading, float speed, bool bindThePoint){
   writeln("running MOVE");
   writeln("heading: ",heading);
   writeln("speed: ", speed);
@@ -71,7 +71,9 @@ public Point move(float heading, float speed){
   point.x = x;
   point.y = y;
   point.arena = this.arena;
-  point.bindToArena();
+  if(bindThePoint){
+    point.bindToArena();
+  }
   writeln("x: ", x," y: ",y);
   return point;
 }

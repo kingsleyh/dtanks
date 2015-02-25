@@ -70,11 +70,6 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
    target.draw(dHeading);
    target.draw(tHeading);
 
-   //auto texture = new Texture();
-   // if(!texture.loadFromFile("resources/grass.png"))
-   //     return;
-   //   auto sprite = new Sprite(texture);
-
   }
 
 

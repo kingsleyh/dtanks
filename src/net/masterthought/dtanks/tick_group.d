@@ -1,71 +1,71 @@
-module net.masterthought.dtanks.tickgroup;
+//module net.masterthought.dtanks.tickgroup;
 
-import std.algorithm;
-import std.array;
-import std.range;
-import net.masterthought.dtanks.corebot;
+//import std.algorithm;
+//import std.array;
+//import std.range;
+//import net.masterthought.dtanks.corebot;
 
-import std.stdio;
+//import std.stdio;
 
-//you need to implement three methods: empty, popFront, and front. empty returns bool telling if it is empty or not. front returns the current element. popFront advances to the next element
-// dont need opApply if using those three;
+////you need to implement three methods: empty, popFront, and front. empty returns bool telling if it is empty or not. front returns the current element. popFront advances to the next element
+//// dont need opApply if using those three;
 
-class TickGroup {
+//class TickGroup {
 
-  CoreBot[] list;
+//  CoreBot[] list;
 
 
-  this(){
-    list = [];
-  }
+//  this(){
+//    list = [];
+//  }
 
-  public void add(CoreBot[] bots){
-     list ~= bots;
+//  public void add(CoreBot[] bots){
+//     list ~= bots;
 
-     //writeln("the list:");
-     //writeln(list);
-  }
+//     //writeln("the list:");
+//     //writeln(list);
+//  }
 
-  public ulong count(){
-    return list.length;
-  }
+//  public ulong count(){
+//    return list.length;
+//  }
 
-  public void tick(){
-    writeln("starting bot tick");
-    foreach(bot ; list){
-      writeln("ticking for bot");
-      bot.tick();
-    }
-  }
+//  public void tick(){
+//    writeln("starting bot tick");
+//    foreach(bot ; list){
+//      writeln("ticking for bot");
+//      bot.tick();
+//    }
+//  }
 
-  //public bool empty(){
-  //  return list.empty();
-  //}
+//  //public bool empty(){
+//  //  return list.empty();
+//  //}
 
-  //public void popFront(){
+//  //public void popFront(){
      
-  //  list.popFront();
-  //  list = origList;
-  //}
+//  //  list.popFront();
+//  //  list = origList;
+//  //}
 
-  //public CoreBot front(){
-  //  return list.front();
-  //}
+//  //public CoreBot front(){
+//  //  return list.front();
+//  //}
 
-  int opApply(int delegate(ref CoreBot) dg){
+//  int opApply(int delegate(ref CoreBot) dg){
 
-int result = 0;
+//int result = 0;
 
-        for (int i = 0; i < list.length; i++)
-        {
-            result = dg(list[i]);
-            if (result)
-                break;
-        }
-        return result;
-  }
+//        for (int i = 0; i < list.length; i++)
+//        {
+//            result = dg(list[i]);
+//            if (result)
+//                break;
+//        }
+//        return result;
+//  }
 
-}
+//}
 
 
 

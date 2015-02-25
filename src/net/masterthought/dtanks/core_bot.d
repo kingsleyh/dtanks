@@ -30,7 +30,7 @@ class CoreBot {
   private int ticks;
   private int health;
 
-  //private int firePower;
+  public int firePower;
   //private int gunEnergy;
 
   private float speed;
@@ -48,7 +48,7 @@ class CoreBot {
      this.position = Point(0, 0, this.arena);
      this.health = 100;
      this.speed = 0;
-     //this.fire_power = void;
+     this.firePower = 0;
      this.heading  = new Heading();
 
      //this.radar = new Radar(this, this.heading.dup);
@@ -110,10 +110,14 @@ class CoreBot {
     this.ticks += 1;
     this.tickBrain();
     writeln("before pos: ", this.position);
-    //updatePosition();
-    this.position = this.position.move(this.heading.radians,this.speed);
+  
+    this.position = this.position.move(this.heading.radians,this.speed,true);
     writeln("after pos: ", this.position);
     //this.adjustFirePower;
+  }
+
+  public bool isFiring(){
+    return  this.firePower && this.firePower > 0;
   }
 
   public void setGuiWindow(Window window){
@@ -128,17 +132,26 @@ class CoreBot {
   public void executeCommand(Command command){
     writeln("executing command");
     writeln(command);
+    
     if(command.heading){
       writeln("in the heading");
-       this.heading = command.heading;
-     }
-     if(command.turretHeading){
-    this.turret.setHeading(command.turretHeading.radians);
-     }
-     if(!isNaN(command.speed)){
-    this.speed = command.speed;
-  }
+      this.heading = command.heading;
+    }
+    
+    if(command.turretHeading){
+      this.turret.setHeading(command.turretHeading.radians);
+    }
+
+    if(!isNaN(command.speed)){
+      this.speed = command.speed;
+    }
+
+    if(command.firePower){
+      this.firePower = command.firePower;
+    }
+    
     writeln("executed the command");
+  
   }
 
   public Sensor sensors(){
@@ -155,6 +168,4 @@ class CoreBot {
     return sensor;
     //return Sensor(this.ticks,this.health,this.speed,this.position,this.heading,this.turret.getHeading(),this.guiWindow);
   }
-
-
 }

@@ -31,7 +31,7 @@ public bool boundToArena(){
 }
 
 public void updatePosition(){
-  this.position = this.position.move(getHeading().radians,this.speed);
+  this.position = this.position.move(getHeading().radians,this.speed, true);
 }
 
 public Heading getHeading(){

@@ -5,6 +5,7 @@ import std.datetime;
 import std.stdio;
 import std.conv;
 import net.masterthought.dtanks.gui.guibot;
+import net.masterthought.dtanks.gui.guishell;
 import net.masterthought.dtanks.match;
 
 class GuiWindow{
@@ -23,6 +24,10 @@ this(Match match){
 
 auto botBodyTexture = new Texture();
     if(!botBodyTexture.loadFromFile("resources/body.png"))
+        return;
+
+      auto shellTexture = new Texture();
+    if(!shellTexture.loadFromFile("resources/bullet.png"))
         return;
 
 auto turretTexture = new Texture();
@@ -70,6 +75,15 @@ window.draw(sprite);
        window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
    }
 
+   foreach(shell ; this.match.shells){
+     if(shell.isDead()){
+         
+     } else {
+     window.draw(new GuiShell(shellTexture,shell));
+     }
+   }
+
+    
 
      auto tickMonitor = new Text("Ticks: " ~ to!dstring(this.match.ticks), font, 12);
      tickMonitor.position = Vector2f(10,this.match.arena.height - 30);

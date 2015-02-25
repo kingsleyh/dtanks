@@ -8,9 +8,9 @@ struct Command {
   Heading heading;
   Heading radarHeading;
   Heading turretHeading;
-  float firePower = 3;
+  int firePower = 0;
 
-  public void fire(float power){
+  public void fire(int power){
      firePower = power;
   }
 

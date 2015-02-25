@@ -40,4 +40,8 @@ class Shell{
   // TO DO
   }
 
+  public void tick(){
+    this.position = this.position.move(this.heading.radians,this.speed,false);
+  }
+
 }

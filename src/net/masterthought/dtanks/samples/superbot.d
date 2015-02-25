@@ -68,6 +68,12 @@ class SuperBot : Brain {
     //elsif sensors.button_down?(Gosu::KbDown)
     //  command.fire_power = 1
     //end
+    if(sensors.buttonDown(Keyboard.Key.Up)){
+     command.firePower = 5;
+    } else if(sensors.buttonDown(Keyboard.Key.Down)){
+      command.firePower = 1;
+    } 
+
 
     return command;
   }
