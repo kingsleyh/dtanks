@@ -61,9 +61,6 @@ public bool outsideArena(){
 }
 
 public Point move(float heading, float speed, bool bindThePoint){
-  writeln("running MOVE");
-  writeln("heading: ",heading);
-  writeln("speed: ", speed);
   auto x = round((this.x - (sin(-heading) * speed)));
   auto y = round((this.y - (cos(-heading) * speed)));
 
@@ -74,7 +71,6 @@ public Point move(float heading, float speed, bool bindThePoint){
   if(bindThePoint){
     point.bindToArena();
   }
-  writeln("x: ", x," y: ",y);
   return point;
 }
 

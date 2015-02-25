@@ -20,6 +20,7 @@ class BasicBot : Brain {
   override public Command tick(Sensor sensors){
 
  command.speed = 2;
+ command.firePower = 1;
 
  if(sensors.ticks % 20 == 0){
   foreach(n ; iota(0,900)){

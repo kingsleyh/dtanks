@@ -4,6 +4,7 @@ import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.shell;
 import net.masterthought.dtanks.point;
+import net.masterthought.dtanks.explosion;
 
 import std.stdio;
 
@@ -16,8 +17,7 @@ class Match {
  private bool stopped;
  public CoreBot[] bots;
  public Shell[] shells;
- //public TickGroup bots;
- //public TickGroup shells;
+ public Explosion[] explosions;
 
  this(Arena arena){
     this.arena = arena;
@@ -59,32 +59,44 @@ class Match {
 //  shell.hits
 //}
 
- private void post_bot_tick(CoreBot bot){
- if(bot.isFiring()){
-        // shell starts life at the end of the turret
-        Point shellPosition = bot.position.move(bot.turret.getHeading().radians, 28,true);
-        this.shells ~= new Shell(bot, shellPosition, bot.turret.getHeading().clone, bot.firePower);
-      }
+ private void postBotTick(CoreBot bot){
+   if(bot.isFiring()){
+     // shell starts life at the end of the turret
+     Point shellPosition = bot.position.move(bot.turret.getHeading().radians, 28,true);
+     this.shells ~= new Shell(bot, shellPosition, bot.turret.getHeading().clone, bot.firePower);
     }
+ }
+
+ //private void preShellTick(Shell shell){
+ //   shell.hits(this.bots,this.explosions);
+ //}
+
+ 
 
  public void incrementTicks(){
-  writeln("ticking");
 
   //tick the shells
   foreach(shell ; this.shells){
+    //preShellTick(shell);
+
+    this.explosions = shell.hits(this.bots,this.explosions);
+
     shell.tick();
   }
 
   //tick the bots
   foreach(bot ; this.bots){
     bot.tick();
+    postBotTick(bot);
+  }
 
-    // post bot tick
-    post_bot_tick(bot);
-
+  //tick the explosions
+  foreach(explosion ; this.explosions){
+    explosion.tick();
   }
 
  
+  writeln("explosions: ", this.explosions);
  
 
   this.ticks += 1;

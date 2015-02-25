@@ -62,6 +62,9 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
     auto fpower = new Text("F: " ~ to!dstring(bot.firePower),font,12);
     fpower.position = Vector2f(x-50,y+112);
 
+    auto life = new Text("F: " ~ to!dstring(bot.health),font,12);
+    life.position = Vector2f(x-50,y+124);
+
    target.draw(botName);
    target.draw(botBody);
    target.draw(turret);
@@ -72,6 +75,7 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
    target.draw(dHeading);
    target.draw(tHeading);
    target.draw(fpower);
+   target.draw(life);
 
   }
 

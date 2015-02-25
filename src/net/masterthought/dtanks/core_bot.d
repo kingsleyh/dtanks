@@ -28,7 +28,7 @@ class CoreBot {
   //private Radar radar;
   public Turret turret;
   private int ticks;
-  private int health;
+  public int health;
 
   public int firePower;
   public int gunEnergy;
@@ -46,7 +46,7 @@ class CoreBot {
      this.ticks = 0;
 
      this.position = Point(0, 0, this.arena);
-     this.health = 100;
+     this.health = 5;
      this.speed = 0;
      this.firePower = 0;
      this.heading  = new Heading();
@@ -79,11 +79,11 @@ class CoreBot {
   //  this.firePower = value;
   //}
 
-  public void reduceHealth(int reduceBy){
+  public void reduceHealth(double reduceBy){
     this.health -= reduceBy;
   }
 
-  public bool dead(){
+  public bool isDead(){
     return this.health <= 0;
   }
 
@@ -120,16 +120,13 @@ class CoreBot {
   }
 
   public void tickBrain(){
-    writeln("ticking in tick brain");
     executeCommand(brain.tick(sensors()));
   }
 
   public void executeCommand(Command command){
-    writeln("executing command");
     writeln(command);
     
     if(command.heading){
-      writeln("in the heading");
       this.heading = command.heading;
     }
     
@@ -144,17 +141,10 @@ class CoreBot {
     //if(command.firePower){
       this.firePower = command.firePower;
     //} 
-
-    writeln("command firepower: ", command.firePower);
-    writeln("bot firepower: ", this.firePower);
-    
-    writeln("executed the command");
   
   }
 
   public Sensor sensors(){
-    writeln("heading before sensor is: ", this.heading.radians);
-      writeln("turret before sensor is: ", turret.getHeading().radians);
     Sensor sensor = Sensor();
     sensor.ticks = ticks;
     sensor.health  = health;

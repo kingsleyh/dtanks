@@ -4,6 +4,10 @@ import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.heading;
+import net.masterthought.dtanks.explosion;
+
+import std.conv;
+import std.stdio;
 
 class Shell{
 
@@ -36,9 +40,31 @@ class Shell{
     this.dead = true;
   }
 
-  public void hits(){
-  // TO DO
+  public Explosion[] hits(CoreBot[] bots, Explosion[] explosions){
+   foreach(bot ; bots){
+    if(bot.position.withinRadius(this.position, 19)){
+      this.setDead();
+      double damage = this.firePower ^^ 1.4;
+      bot.reduceHealth(damage);
+      if(bot.isDead()){
+        writeln("BOT IS DEAD");
+        explosions ~= new Explosion(bot.position);
+      } else {
+        writeln("BOT IS ALIVE");
+      }
+    }
+   }
+   return explosions;
   }
+
+ //shell.hits(self.bots.all_but(shell.bot)) do |origin_bot, bot_hit|
+ //       damage = (shell.fire_power**RTanque::Shell::RATIO)
+ //       bot_hit.reduce_health(damage)
+ //       if bot_hit.dead?
+ //         @explosions.add(Explosion.new(bot_hit.position))
+ //       end
+ //     end
+
 
   public void tick(){
     this.position = this.position.move(this.heading.radians,this.speed,false);
