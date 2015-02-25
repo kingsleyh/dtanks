@@ -9,6 +9,7 @@ import dsfml.graphics;
 
 import std.random;
 import std.stdio;
+import std.range;
 
 class BasicBot : Brain {
 
@@ -19,6 +20,12 @@ class BasicBot : Brain {
   override public Command tick(Sensor sensors){
 
  command.speed = 2;
+
+ if(sensors.ticks % 20 == 0){
+  foreach(n ; iota(0,900)){
+    command.turretHeading = new Heading(sensors.turretHeading.radians - Heading.ONE_DEGREE * 5);
+  }
+ }
 
  if(sensors.ticks % 100 == 0){
   command.heading = new Heading(Heading.S);
@@ -32,6 +39,9 @@ class BasicBot : Brain {
   command.heading = new Heading(Heading.W);
  }
 
+   if(sensors.ticks % 500 == 0){
+  command.heading = new Heading(Heading.E);
+ }
 
     return command;
   }

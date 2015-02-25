@@ -3,6 +3,7 @@ module net.masterthought.dtanks.guiwindow;
 import dsfml.graphics;
 import std.datetime;
 import std.stdio;
+import std.conv;
 import net.masterthought.dtanks.gui.guibot;
 import net.masterthought.dtanks.match;
 
@@ -68,6 +69,12 @@ window.draw(sprite);
        bot.setGuiWindow(window);
        window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
    }
+
+
+     auto tickMonitor = new Text("Ticks: " ~ to!dstring(this.match.ticks), font, 12);
+     tickMonitor.position = Vector2f(10,this.match.arena.height - 30);
+     tickMonitor.setColor(Color.Yellow);
+     window.draw(tickMonitor);
 
         window.display();
     }

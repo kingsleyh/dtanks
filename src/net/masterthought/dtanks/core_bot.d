@@ -29,6 +29,7 @@ class CoreBot {
   public Turret turret;
   private int ticks;
   private int health;
+
   //private int firePower;
   //private int gunEnergy;
 

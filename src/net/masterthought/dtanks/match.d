@@ -3,6 +3,7 @@ module net.masterthought.dtanks.match;
 import net.masterthought.dtanks.tickgroup;
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.arena;
+import net.masterthought.dtanks.shell;
 
 import std.stdio;
 
@@ -11,9 +12,10 @@ class Match {
  public Arena arena;
  private int maxTicks;
  private bool teams;
- private int ticks;
+ public int ticks;
  private bool stopped;
  public TickGroup bots;
+ public TickGroup shells;
 
  this(Arena arena){
     this.arena = arena;
@@ -51,8 +53,13 @@ class Match {
   this.stopped = true;
  }
 
+//public void preShellTick(Shell shell){
+//  shell.hits
+//}
+
  public void incrementTicks(){
   writeln("ticking");
+  //this.shells.tick();
   this.bots.tick();
   this.ticks += 1;
  }
