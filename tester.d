@@ -62,10 +62,15 @@ alias NORTH N;
 
 void main(){
 
+  string[] list = ["1","2","3","4"];
 
+  writeln("before: ",list);
+  
+   list = list.filter!(n => n == "1").array;
 
+  writeln("after: ", list);
 
-writeln(uniform(0.0,0.9) * Woo.FULL_ANGLE);
+//writeln(uniform(0.0,0.9) * Woo.FULL_ANGLE);
 
   //writeln(uniform(0.0,100.0));
 

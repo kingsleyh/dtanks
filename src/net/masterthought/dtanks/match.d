@@ -60,9 +60,9 @@ class Match {
 //}
 
  private void post_bot_tick(CoreBot bot){
- if(bot.isFiring){
+ if(bot.isFiring()){
         // shell starts life at the end of the turret
-        Point shellPosition = bot.position.move(bot.turret.getHeading().radians, 27,true);
+        Point shellPosition = bot.position.move(bot.turret.getHeading().radians, 28,true);
         this.shells ~= new Shell(bot, shellPosition, bot.turret.getHeading().clone, bot.firePower);
       }
     }

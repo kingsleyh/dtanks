@@ -31,7 +31,7 @@ class CoreBot {
   private int health;
 
   public int firePower;
-  //private int gunEnergy;
+  public int gunEnergy;
 
   private float speed;
   public Heading heading;
@@ -75,26 +75,8 @@ class CoreBot {
     this.health = value;
   }
 
-  //public void firePower(int value){
-  //  this.firePower =  value;
-  //}
-
-  //public void adjustFirePower(){
-  //  this.gunEnergy = 100;
-  //  if(this.gunEnergy <= 0){
-  //     this.firePower = 0;
-  //    } else {
-  //      this.gunEnergy -= 1;
-  //    }
-  //    this.gunEnergy += 1;
-
-  //    if(this.gunEnergy > 100){
-  //      this.gunEnergy = 100
-  //    }
-  //}
-
-  //public bool firing(){
-  //  return this.firePower && this.firePower > 0;
+  //public void setFirePower(int value){
+  //  this.firePower = value;
   //}
 
   public void reduceHealth(int reduceBy){
@@ -105,19 +87,32 @@ class CoreBot {
     return this.health <= 0;
   }
 
+  public void adjustFirePower(){
+    if(!this.gunEnergy){
+      this.gunEnergy = 10;
+    }
+    if(this.gunEnergy <= 0){
+      this.firePower = 0;
+    } else {
+      this.gunEnergy -= (this.firePower ^^ 1.5) * 10;
+    }
+    this.gunEnergy += 1;
+    if(this.gunEnergy > 10){
+      this.gunEnergy = 10; 
+    }
+  }
+
   public void tick(){
-    writeln("ticking in corebot");
     this.ticks += 1;
     this.tickBrain();
-    writeln("before pos: ", this.position);
-  
+    // update bot position
     this.position = this.position.move(this.heading.radians,this.speed,true);
-    writeln("after pos: ", this.position);
-    //this.adjustFirePower;
+
+    adjustFirePower();
   }
 
   public bool isFiring(){
-    return  this.firePower && this.firePower > 0;
+    return this.firePower && this.firePower > 0;
   }
 
   public void setGuiWindow(Window window){
@@ -146,9 +141,12 @@ class CoreBot {
       this.speed = command.speed;
     }
 
-    if(command.firePower){
+    //if(command.firePower){
       this.firePower = command.firePower;
-    }
+    //} 
+
+    writeln("command firepower: ", command.firePower);
+    writeln("bot firepower: ", this.firePower);
     
     writeln("executed the command");
   

@@ -2,8 +2,10 @@ module net.masterthought.dtanks.guiwindow;
 
 import dsfml.graphics;
 import std.datetime;
+import std.algorithm;
 import std.stdio;
 import std.conv;
+import std.array;
 import net.masterthought.dtanks.gui.guibot;
 import net.masterthought.dtanks.gui.guishell;
 import net.masterthought.dtanks.match;
@@ -75,12 +77,11 @@ window.draw(sprite);
        window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
    }
 
+   //remove dead shells
+   this.match.shells = this.match.shells.filter!(n => !n.isDead()).array;
+
    foreach(shell ; this.match.shells){
-     if(shell.isDead()){
-         
-     } else {
-     window.draw(new GuiShell(shellTexture,shell));
-     }
+        window.draw(new GuiShell(shellTexture,shell));
    }
 
     
