@@ -6,6 +6,8 @@ import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.heading;
 import net.masterthought.dtanks.explosion;
 
+import std.algorithm;
+import std.array;
 import std.conv;
 import std.stdio;
 
@@ -41,16 +43,14 @@ class Shell{
   }
 
   public Explosion[] hits(CoreBot[] bots, Explosion[] explosions){
-   foreach(bot ; bots){
+   CoreBot[] otherBots = bots.filter!(b => b != this.bot).array;
+   foreach(bot ; otherBots){
     if(bot.position.withinRadius(this.position, 19)){
       this.setDead();
       double damage = this.firePower ^^ 1.4;
       bot.reduceHealth(damage);
       if(bot.isDead()){
-        writeln("BOT IS DEAD");
         explosions ~= new Explosion(bot.position);
-      } else {
-        writeln("BOT IS ALIVE");
       }
     }
    }

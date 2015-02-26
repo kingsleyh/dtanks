@@ -3,6 +3,7 @@ module net.masterthought.dtanks.gui.guibot;
 import dsfml.graphics;
 import std.conv;
 import net.masterthought.dtanks.corebot;
+import net.masterthought.dtanks.gui.healthcolorcalculator;
 
 class GuiBot : Drawable {
 
@@ -38,9 +39,10 @@ turret.origin(Vector2f(10,27));
 turret.rotation(this.bot.turret.getHeading().toDegrees());
 
 
-   auto healthBar = new RectangleShape(Vector2f(100,3));
-    healthBar.fillColor = Color.Green;
-    healthBar.position = Vector2f(x-50,y+35);
+   auto healthBar = new RectangleShape(Vector2f(bot.health,3));
+   double[] color = new HealthColorCalculator(bot.health).colorAsRgb();
+   healthBar.fillColor = Color(to!ubyte(color[0]),to!ubyte(color[1]),to!ubyte(color[2]));
+   healthBar.position = Vector2f(x-50,y+35);
 
 
     auto botName = new Text(name, font, 12);
@@ -62,7 +64,7 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
     auto fpower = new Text("F: " ~ to!dstring(bot.firePower),font,12);
     fpower.position = Vector2f(x-50,y+112);
 
-    auto life = new Text("F: " ~ to!dstring(bot.health),font,12);
+    auto life = new Text("L: " ~ to!dstring(bot.health),font,12);
     life.position = Vector2f(x-50,y+124);
 
    target.draw(botName);

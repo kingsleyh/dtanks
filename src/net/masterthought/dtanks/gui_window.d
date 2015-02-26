@@ -10,8 +10,6 @@ import std.range;
 import net.masterthought.dtanks.gui.guibot;
 import net.masterthought.dtanks.gui.guishell;
 import net.masterthought.dtanks.gui.guiexplosion;
-import net.masterthought.dtanks.explosion;
-import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.match;
 
 class GuiWindow{
@@ -50,13 +48,13 @@ auto texture = new Texture();
       auto sprite = new Sprite(texture);
 
 
-  Texture[] explosionTextures = [];
-  foreach(n ; iota(1,71)){
-    auto t = new Texture();
-    if(!t.loadFromFile("resources/explosions/explosion2-" ~ to!string(n) ~ ".png"))
-        return;
-     explosionTextures ~= t;
-  }
+  //Texture[] explosionTextures = [];
+  //foreach(n ; iota(1,71)){
+  //  auto t = new Texture();
+  //  if(!t.loadFromFile("resources/explosions/explosion2-" ~ to!string(n) ~ ".png"))
+  //      return;
+  //   explosionTextures ~= t;
+  //}
 
  while (window.isOpen())
     {
@@ -68,6 +66,10 @@ auto texture = new Texture();
             {
                 window.close();
             }
+        }
+
+        if(this.match.finished()){
+          //window.close();
         }
 
         //if(Keyboard.isKeyPressed(Keyboard.Key.Left)){
@@ -97,19 +99,22 @@ window.draw(sprite);
         window.draw(new GuiShell(shellTexture,shell));
    }
 
-foreach(explosion ; this.match.explosions){
- foreach(exTexture ; explosionTextures){
-    auto exploder = new Sprite(exTexture);
-    //Point point = Point.rand(this.match.arena);
-    exploder.position = Vector2f(explosion.position.x,explosion.position.y);
-    window.draw(exploder);
-    explosionTextures.popFront();
-  }
-}
+//foreach(explosion ; this.match.explosions){
+// foreach(exTexture ; explosionTextures){
+//    auto exploder = new Sprite(exTexture);
+//    //Point point = Point.rand(this.match.arena);
+//    exploder.position = Vector2f(explosion.position.x,explosion.position.y);
+//    window.draw(exploder);
+//    explosionTextures.popFront();
+//  }
+//}
     //foreach(explosion ; this.match.explosions){
-      
+
       //window.draw(new GuiExplosion(explosionTextures, new Explosion(Point.rand(this.match.arena))));
     //}
+
+     //remove dead bots
+   this.match.bots= this.match.bots.filter!(n => !n.isDead()).array;
 
      auto tickMonitor = new Text("Ticks: " ~ to!dstring(this.match.ticks), font, 12);
      tickMonitor.position = Vector2f(10,this.match.arena.height - 30);

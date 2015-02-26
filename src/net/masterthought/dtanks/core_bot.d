@@ -46,7 +46,7 @@ class CoreBot {
      this.ticks = 0;
 
      this.position = Point(0, 0, this.arena);
-     this.health = 5;
+     this.health = 100;
      this.speed = 0;
      this.firePower = 0;
      this.heading  = new Heading();
@@ -98,7 +98,7 @@ class CoreBot {
     }
     this.gunEnergy += 1;
     if(this.gunEnergy > 10){
-      this.gunEnergy = 10; 
+      this.gunEnergy = 10;
     }
   }
 
@@ -125,11 +125,11 @@ class CoreBot {
 
   public void executeCommand(Command command){
     writeln(command);
-    
+
     if(command.heading){
       this.heading = command.heading;
     }
-    
+
     if(command.turretHeading){
       this.turret.setHeading(command.turretHeading.radians);
     }
@@ -138,10 +138,10 @@ class CoreBot {
       this.speed = command.speed;
     }
 
-    //if(command.firePower){
+    if(command.firePower){
       this.firePower = command.firePower;
-    //} 
-  
+    }
+
   }
 
   public Sensor sensors(){

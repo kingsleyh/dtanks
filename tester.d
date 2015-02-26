@@ -62,13 +62,20 @@ alias NORTH N;
 
 void main(){
 
-  string[] list = ["1","2","3","4"];
+  //string[] list = ["1","2","3","4"];
 
-  writeln("before: ",list);
-  
-   list = list.filter!(n => n == "1").array;
+  //writeln("before: ",list);
 
-  writeln("after: ", list);
+  // list = list.filter!(n => n == "1").array;
+
+  //writeln("after: ", list);
+
+
+ enum a = [74,190,74].map!(v => v/255.0).array;
+
+writeln(a);
+
+//writeln(to!ubyte(74));
 
 //writeln(uniform(0.0,0.9) * Woo.FULL_ANGLE);
 

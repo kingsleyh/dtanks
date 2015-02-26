@@ -35,10 +35,10 @@ class Match {
  }
 
  public bool finished(){
-
+  return this.stopped || this.maxTicksReached() || this.bots.length <= 1;
   //return this.stopped || this.maxTicksReached || this.bots.count <= 1 ||
   //(this.teams && this.bots.map!(n => n.name).array.sort.uniq.array.size ==1);
-  return false;
+  //return false;
  }
 
  public void addBots(CoreBot[] bots){
@@ -71,7 +71,7 @@ class Match {
  //   shell.hits(this.bots,this.explosions);
  //}
 
- 
+
 
  public void incrementTicks(){
 
@@ -79,7 +79,10 @@ class Match {
   foreach(shell ; this.shells){
     //preShellTick(shell);
 
-    this.explosions = shell.hits(this.bots,this.explosions);
+    // dont return explosions for now - until figure out how to handle them better
+    //this.explosions = shell.hits(this.bots,this.explosions);
+    shell.hits(this.bots,this.explosions);
+
 
     shell.tick();
   }
@@ -95,9 +98,9 @@ class Match {
     explosion.tick();
   }
 
- 
+
   writeln("explosions: ", this.explosions);
- 
+
 
   this.ticks += 1;
  }
