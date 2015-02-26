@@ -87,24 +87,26 @@ void main(){
 
 
 
-double oneDegree = (PI / 180.0);
-double first = -(oneDegree * 10.0);
-double second = (oneDegree * 10.0);
-double step = 0.000001;
-double[] r = iota(first,second,step).array;
+//double oneDegree = (PI / 180.0);
+//double first = -(oneDegree * 10.0);
+//double second = (oneDegree * 10.0);
+//double step = 0.000001;
+//double[] r = iota(first,second,step).array;
 
+//writeln(r);
+
+//double[] hardCoded = [ 0.174521, 0.174522, 0.174523, 0.174524, 0.174525, 0.174526, 0.174527, 0.174528, 0.174529, 0.17453, 0.174531, 0.174532];
+
+//double item = 0.174531;
+//writeln(r.canFind(item));  // false - I expect true!!!!
+
+//writeln(hardCoded.canFind(item)); // true - as I expect
+
+
+int[] n = [1,2,3,4,5];
+
+auto r = n.filter!(a => a == 2);
 writeln(r);
-
-double[] hardCoded = [ 0.174521, 0.174522, 0.174523, 0.174524, 0.174525, 0.174526, 0.174527, 0.174528, 0.174529, 0.17453, 0.174531, 0.174532];
-
-double item = 0.174531;
-writeln(r.canFind(item));  // false - I expect true!!!!
-
-writeln(hardCoded.canFind(item)); // true - as I expect
-
-
-
-
 
 
 

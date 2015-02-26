@@ -28,7 +28,7 @@ class Radar {
 
 CoreBot bot;
 Heading heading;
-public Reflection[] reflections;
+private Reflection[] reflections;
 
   this(CoreBot bot, Heading heading){
     this.bot = bot;
@@ -47,6 +47,10 @@ public Reflection[] reflections;
   public bool isEmpty(){
     return this.reflections.empty;
   }
+
+ public Reflection[] getReflections(){
+   return this.reflections;
+ }
 
  public Radar scan(CoreBot[] bots){
   this.reflections = [];

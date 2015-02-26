@@ -3,6 +3,7 @@ module net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
+import net.masterthought.dtanks.bot.radar;
 
 class Brain {
 
