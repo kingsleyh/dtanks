@@ -47,7 +47,7 @@ class BasicBot : Brain {
     return command;
   }
 
-  override public dstring name(){
+  override public string name(){
     return "BasicBot";
   }
 

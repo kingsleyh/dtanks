@@ -5,6 +5,7 @@ import std.math;
 import std.conv;
 import std.stdio;
 import net.masterthought.dtanks.arena;
+import net.masterthought.dtanks.heading;
 
 struct Point {
 
@@ -87,9 +88,11 @@ public void bindToArena(){
   }
 }
 
-//public Heading heading(Point otherPoint){
-//  Heading.new_between_points(self, other_point)
-//}
+public Heading heading(Point otherPoint){
+  return Heading.newBetweenPoints(this, otherPoint);
+}
+
+
 
 
 

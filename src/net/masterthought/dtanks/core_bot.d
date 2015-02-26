@@ -5,7 +5,7 @@ import net.masterthought.dtanks.heading;
 
 import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.bot.brain;
-//import net.masterthought.dtanks.bot.radar;
+import net.masterthought.dtanks.bot.radar;
 import net.masterthought.dtanks.bot.turret;
 
 import net.masterthought.dtanks.bot.sensor;
@@ -25,7 +25,7 @@ class CoreBot {
 
   private Arena arena;
   private Brain brain;
-  //private Radar radar;
+  public Radar radar;
   public Turret turret;
   private int ticks;
   public int health;
@@ -36,6 +36,7 @@ class CoreBot {
   private float speed;
   public Heading heading;
   public Point position;
+  //public Heading radarHeading;
 
   public Window guiWindow;
 
@@ -51,7 +52,7 @@ class CoreBot {
      this.firePower = 0;
      this.heading  = new Heading();
 
-     //this.radar = new Radar(this, this.heading.dup);
+     this.radar = new Radar(this, this.heading.clone());
      this.turret = new Turret(this.heading.clone());
   }
 
@@ -63,11 +64,13 @@ class CoreBot {
      Heading randHeading = Heading.rand();
      bot.heading = randHeading;
      bot.turret.setHeading(randHeading.radians);
+     bot.radar.setHeading(randHeading.radians);
+     //bot.radarHeading = randHeading;
      //core.thread.Thread.sleep( dur!("seconds")( 10 ) );
      return bot;
   }
 
-  public dstring getName(){
+  public string getName(){
     return this.brain.name();
   }
 
@@ -142,6 +145,10 @@ class CoreBot {
       this.firePower = command.firePower;
     }
 
+    if(command.radarHeading){
+      this.radar.setHeading(command.radarHeading.radians);
+    }
+
   }
 
   public Sensor sensors(){
@@ -151,6 +158,8 @@ class CoreBot {
     sensor.speed = speed;
     sensor.position = position;
     sensor.heading = this.heading;
+    sensor.radar = this.radar;
+    sensor.radarHeading = radar.heading;
     sensor.turretHeading = turret.getHeading();
     sensor.guiWindow = guiWindow;
     return sensor;

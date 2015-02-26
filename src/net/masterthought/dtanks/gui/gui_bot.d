@@ -9,15 +9,17 @@ class GuiBot : Drawable {
 
 Texture botBodyTexture;
 Texture turretTexture;
+Texture radarTexture;
 Font font;
 CoreBot bot;
 float x;
 float y;
-dstring name;
+string name;
 
-this(Texture botBodyTexture, Texture turretTexture, Font font, CoreBot bot){
+this(Texture botBodyTexture, Texture turretTexture, Texture radarTexture,Font font, CoreBot bot){
  this.botBodyTexture = botBodyTexture;
  this.turretTexture = turretTexture;
+ this.radarTexture = radarTexture;
  this.font = font;
  this.bot = bot;
  this.x = bot.position.x;
@@ -38,6 +40,10 @@ turret.position = Vector2f(x,y);
 turret.origin(Vector2f(10,27));
 turret.rotation(this.bot.turret.getHeading().toDegrees());
 
+auto radar = new Sprite(radarTexture);
+radar.position = Vector2f(x,y);
+radar.origin(Vector2f(11,8));
+radar.rotation(this.bot.radar.heading.toDegrees());
 
    auto healthBar = new RectangleShape(Vector2f(bot.health,3));
    double[] color = new HealthColorCalculator(bot.health).colorAsRgb();
@@ -45,7 +51,7 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
    healthBar.position = Vector2f(x-50,y+35);
 
 
-    auto botName = new Text(name, font, 12);
+    auto botName = new Text("" ~ to!dstring(name), font, 12);
     botName.position = Vector2f(x-50,y+45);
 
     // DEBUG
@@ -70,6 +76,7 @@ turret.rotation(this.bot.turret.getHeading().toDegrees());
    target.draw(botName);
    target.draw(botBody);
    target.draw(turret);
+   target.draw(radar);
    target.draw(healthBar);
 
    target.draw(posX);

@@ -38,6 +38,10 @@ auto turretTexture = new Texture();
     if(!turretTexture.loadFromFile("resources/turret.png"))
         return;
 
+      auto radarTexture = new Texture();
+    if(!radarTexture.loadFromFile("resources/radar.png"))
+        return;
+
        auto font = new Font();
     if(!font.loadFromFile("resources/arial.ttf"))
         return;
@@ -72,14 +76,6 @@ auto texture = new Texture();
           //window.close();
         }
 
-        //if(Keyboard.isKeyPressed(Keyboard.Key.Left)){
-        //  writeln("you pressed the LEFT key");
-        //}
-
-        //  if(Keyboard.isKeyPressed(Keyboard.Key.Right)){
-        //  writeln("you pressed the RIGHT key");
-        //}
-
       this.match.incrementTicks();
 
         window.clear();
@@ -89,7 +85,7 @@ window.draw(sprite);
 
  foreach(bot ; this.match.bots){
        bot.setGuiWindow(window);
-       window.draw(new GuiBot(botBodyTexture,turretTexture,font,bot));
+       window.draw(new GuiBot(botBodyTexture,turretTexture,radarTexture,font,bot));
    }
 
    //remove dead shells

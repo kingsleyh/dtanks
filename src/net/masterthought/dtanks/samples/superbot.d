@@ -51,11 +51,16 @@ class SuperBot : Brain {
       command.firePower = 0;
     }
 
+   if(sensors.buttonDown(Keyboard.Key.R)){
+     command.radarHeading = new Heading(sensors.radar.heading.radians - Heading.ONE_DEGREE * 3);
+    } else if(sensors.buttonDown(Keyboard.Key.T)){
+      command.radarHeading = new Heading(sensors.radar.heading.radians + Heading.ONE_DEGREE * 3);
+    }
 
     return command;
   }
 
-  override public dstring name(){
+  override public string name(){
     return "SuperBot";
   }
 

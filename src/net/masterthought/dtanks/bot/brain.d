@@ -31,7 +31,7 @@ class Brain {
      return command;
   }
 
-  public dstring name(){
+  public string name(){
     return "no name";
   }
 
