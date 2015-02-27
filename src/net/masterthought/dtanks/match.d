@@ -7,6 +7,8 @@ import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.explosion;
 
 import std.stdio;
+import std.array;
+import std.algorithm;
 
 class Match {
 
@@ -67,6 +69,11 @@ class Match {
     }
  }
 
+private void preBotTick(CoreBot bot){
+    CoreBot[] otherBots = bots.filter!(b => b != bot).array;
+  bot.radar.scan(otherBots);
+}
+
  //private void preShellTick(Shell shell){
  //   shell.hits(this.bots,this.explosions);
  //}
@@ -89,6 +96,7 @@ class Match {
 
   //tick the bots
   foreach(bot ; this.bots){
+    preBotTick(bot);
     bot.tick();
     postBotTick(bot);
   }

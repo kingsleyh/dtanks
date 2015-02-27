@@ -15,9 +15,9 @@ class Brain {
     this.arena = arena;
   }
 
-  //public void setSensors(Sensors[] sensors){
-  //  this.sensors = sensors;
-  //}
+  public void setSensors(Sensor sensors){
+    this.sensors = sensors;
+  }
 
   //public void setCommand(Command command){
   //  this.command = command;

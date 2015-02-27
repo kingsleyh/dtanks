@@ -42,7 +42,8 @@ struct Point {
  }
 
 public bool onBottomWall(){
-  return this.y <= this.arena.height;
+  writeln("bottom:- y: ", y, " h: ", arena.height);
+  return this.y >= this.arena.height;
 }
 
 public bool onLeftWall(){
@@ -54,6 +55,10 @@ public bool onRightWall(){
 }
 
 public bool onWall(){
+  writeln("top wall: ",onTopWall());
+   writeln("bottom wall: ",onBottomWall());
+    writeln("right wall: ",onRightWall());
+     writeln("left wall: ",onLeftWall());
   return onTopWall() || onBottomWall() || onRightWall() || onLeftWall();
 }
 

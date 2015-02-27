@@ -70,7 +70,9 @@ void main(){
   // list = list.filter!(n => n == "1").array;
 
   //writeln("after: ", list);
-
+real item = 0.174531;
+bool res = !iota(-((PI / 180.0) * 10.0),((PI / 180.0) * 10.0),0.000001).filter!(n => n == item).empty;
+writeln(res);
 
  //enum a = [74,190,74].map!(v => v/255.0).array;
 
@@ -87,27 +89,40 @@ void main(){
 
 
 
-//double oneDegree = (PI / 180.0);
-//double first = -(oneDegree * 10.0);
-//double second = (oneDegree * 10.0);
-//double step = 0.000001;
-//double[] r = iota(first,second,step).array;
+//float oneDegree = (PI / 180.0)f;
+//float first = -(oneDegree * 10.0);
+//float second = (oneDegree * 10.0);
+//float step = 0.000001;
+//auto r = iota(first,second,step);
 
 //writeln(r);
 
 //double[] hardCoded = [ 0.174521, 0.174522, 0.174523, 0.174524, 0.174525, 0.174526, 0.174527, 0.174528, 0.174529, 0.17453, 0.174531, 0.174532];
 
 //double item = 0.174531;
+//writeln( !r.filter!(n => to!string(n) == to!string(item) ).empty );
+
 //writeln(r.canFind(item));  // false - I expect true!!!!
 
 //writeln(hardCoded.canFind(item)); // true - as I expect
 
 
-int[] n = [1,2,3,4,5];
+//int[] n = [1,2,3,4,5];
 
-auto r = n.filter!(a => a == 2);
-writeln(r);
+//auto r = n.filter!(a => a == 2);
+//writeln(n.front);
 
+
+//struct Reflection{
+//  int heading;
+//  string name;
+//}
+
+//Reflection* reflection;
+
+
+
+//reflection = null;
 
 
 //writeln(r);

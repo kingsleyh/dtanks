@@ -21,7 +21,9 @@ class SuperBot : Brain {
     //command.heading = new Heading(Heading.NE);
     //command.turretHeading = new Heading(Heading.N);
 
-    writeln(sensors);
+    //writeln(sensors);
+    //writeln(sensors.position.onWall());
+   writeln("superbot heading: ", sensors.heading.toDegrees());
 
     if(sensors.buttonDown(Keyboard.Key.Left)){
      command.turretHeading = new Heading(sensors.turretHeading.radians - Heading.ONE_DEGREE * 3);

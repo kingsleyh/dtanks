@@ -10,7 +10,7 @@ struct Sensor{
   int ticks;
   float health;
   float speed;
-  float gunEnergy;
+  int gunEnergy;
   Point position;
   Heading heading;
   Radar radar;

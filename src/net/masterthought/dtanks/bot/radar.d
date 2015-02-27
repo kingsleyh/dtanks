@@ -65,14 +65,20 @@ private Reflection[] reflections;
  }
 
 public bool canDetect(CoreBot otherBot){
- float oneDegree = (PI / 180.0);
- float first = -(oneDegree * 10.0);
- float second = (oneDegree * 10.0);
- string[] r = iota(first,second,0.000001).array.map!(n => to!string(n)).array;
- float search = Heading.deltaBetweenPoints(position(),this.heading.radians,otherBot.position);
- return r.canFind(to!string(search));
 
+float oneDegree = (PI / 180.0);
+    float first = -(oneDegree * 10.0);
+    float second = (oneDegree * 10.0);
+    float search = Heading.deltaBetweenPoints(position(),
+      this.heading.radians, otherBot.position);
+  return first <= search && search < second;
 
+ //float oneDegree = (PI / 180.0);
+ //float first = -(oneDegree * 10.0);
+ //float second = (oneDegree * 10.0);
+ //string[] r = iota(first,second,0.000001).map!(n => to!string(n)).array;
+ //float search = Heading.deltaBetweenPoints(position(),this.heading.radians,otherBot.position);
+ //return r.canFind(to!string(search));
 }
 
 }

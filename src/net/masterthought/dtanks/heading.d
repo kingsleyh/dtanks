@@ -39,7 +39,7 @@ public static Heading newFromDegrees(float degrees){
 }
 
 public static Heading newBetweenPoints(Point from, Point to){
- return new Heading(from == to ? 0.0 : atan2(to.x - from.x, to.y - from.y));
+ return new Heading(from == to ? 0.0 : atan2(to.x - from.x, from.y - to.y));
 }
 
 public static float deltaBetweenPoints(Point from, float fromHeading, Point to){

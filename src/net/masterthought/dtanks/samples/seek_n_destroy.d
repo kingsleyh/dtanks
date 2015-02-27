@@ -26,35 +26,40 @@ class SeeknDestroy : Brain {
 
   override public Command tick(Sensor sensors){
 
-  getRadarLock();
+  //getRadarLock();
 
- //seekLock();
+ //seekLock(sensors);
 
-     //if(getRadarLock()){
-     //   destroyLock(lock);
-     //} else {
-     // seekLock();
-     //}
+     if(getRadarLock(sensors)){
+        destroyLock(lock, sensors);
+     } else {
+      seekLock(sensors);
+     }
 
 
     return command;
   }
 
- public void destroyLock(Reflection reflection){
+ public void destroyLock(Reflection reflection, Sensor sensors){
+
+writeln("target: ", reflection.heading.toDegrees());
+
    command.heading = reflection.heading;
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
-   command.speed = reflection.distance > 200 ? 5 : 5 / 2.0;
+   command.speed = reflection.distance > 200 ? 2 : 2 / 2.0;
    if(reflection.heading.delta(sensors.turretHeading.radians).abs < TURRET_FIRE_RANGE){
     command.fire(reflection.distance > 200 ? 5 : 1);
    }
  }
 
-  public void seekLock(){
+  public void seekLock(Sensor sensors){
+    writeln("seeking lock");
     if(sensors.position.onWall()){
-      desiredHeading = new Heading(sensors.heading.radians + Heading.HALF_ANGLE);
+      writeln("ON WALL--------------");
+      desiredHeading = new Heading(sensors.heading.radians + Heading.ONE_DEGREE * 3);
     }
-      //command.radarHeading = new Heading(sensors.radar.heading.radians + Heading.ONE_DEGREE * 3);
+      command.radarHeading = new Heading(sensors.radar.heading.radians + Heading.ONE_DEGREE * 3);
     command.speed = 1;
     if(desiredHeading){
       command.heading = desiredHeading;
@@ -62,7 +67,8 @@ class SeeknDestroy : Brain {
     }
   }
 
-  public bool getRadarLock(){
+  public bool getRadarLock(Sensor sensors){
+    writeln("looking for bots: ", sensors.radar.getReflections());
     string lockedOnName;
     bool gotLock = false;
     if(lockedOnName){
@@ -70,9 +76,14 @@ class SeeknDestroy : Brain {
       Reflection[] res = sensors.radar.getReflections().filter!(r => r.name == lockedOnName).array;
       lock = res.empty ? sensors.radar.getReflections().front : res.front;
     } else {
-      lock = sensors.radar.getReflections().front;
+      if(!sensors.radar.getReflections().empty){
+             gotLock = true;
+          lock =sensors.radar.getReflections().front;
+        }
     }
     if(gotLock){
+      writeln("here I am ");
+      writeln("name: ", lock.name);
       lockedOnName = lock.name;
     }
     return gotLock;

@@ -20,6 +20,7 @@ import dsfml.graphics;
 import std.stdio;
 import core.thread;
 import std.math;
+import std.range;
 
 class CoreBot {
 
@@ -50,10 +51,12 @@ class CoreBot {
      this.health = 100;
      this.speed = 0;
      this.firePower = 0;
+     this.gunEnergy = 10;
      this.heading  = new Heading();
 
      this.radar = new Radar(this, this.heading.clone());
      this.turret = new Turret(this.heading.clone());
+
   }
 
  //mixin Moveable;
@@ -65,9 +68,23 @@ class CoreBot {
      bot.heading = randHeading;
      bot.turret.setHeading(randHeading.radians);
      bot.radar.setHeading(randHeading.radians);
+     bot.brain.setSensors(bot.sensors());
      //bot.radarHeading = randHeading;
      //core.thread.Thread.sleep( dur!("seconds")( 10 ) );
      return bot;
+  }
+
+  private void checkAttributes(){
+     writeln(ticks);
+    writeln(health);
+   writeln(speed);
+    writeln(position);
+    writeln(heading);
+   writeln(radar.getReflections());
+    writeln(radar.heading);
+    writeln(turret.getHeading());
+   writeln(guiWindow);
+   //core.thread.Thread.sleep( dur!("seconds")( 10 ) );
   }
 
   public string getName(){
@@ -152,6 +169,11 @@ class CoreBot {
   }
 
   public Sensor sensors(){
+
+    writeln("checking attributes");
+     checkAttributes();
+     writeln("finished attribut checking");
+
     Sensor sensor = Sensor();
     sensor.ticks = ticks;
     sensor.health  = health;
@@ -162,7 +184,9 @@ class CoreBot {
     sensor.radarHeading = radar.heading;
     sensor.turretHeading = turret.getHeading();
     sensor.guiWindow = guiWindow;
+
+    writeln("checking radar: ");
+    writeln(sensor.radar.getReflections());
     return sensor;
-    //return Sensor(this.ticks,this.health,this.speed,this.position,this.heading,this.turret.getHeading(),this.guiWindow);
   }
 }
