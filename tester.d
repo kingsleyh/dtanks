@@ -61,7 +61,26 @@ alias NORTH N;
 
 }
 
+
+
+public int setIt(int num){
+  return 1;
+}
+
+public string setIt(string num){
+  return "yy";
+}
+
+
+
+
 void main(){
+
+ int[] a = [1,2,6,2,9,4,3,0];
+auto s  = a.reduce!(min,max);
+
+
+ writeln(s[1]);
 
   //string[] list = ["1","2","3","4"];
 
@@ -74,7 +93,8 @@ void main(){
 //bool res = !iota(-((PI / 180.0) * 10.0),((PI / 180.0) * 10.0),0.000001).filter!(n => n == item).empty;
 //writeln(res);
 
-writeln(round(10.98f));
+//writeln(round(10.98f));
+
 
 
  //enum a = [74,190,74].map!(v => v/255.0).array;

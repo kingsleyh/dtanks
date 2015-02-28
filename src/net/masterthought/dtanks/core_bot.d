@@ -12,6 +12,9 @@ import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 
 import net.masterthought.dtanks.samples.superbot;
+import net.masterthought.dtanks.normalizedattr;
+
+import net.masterthought.dtanks.configuration;
 
 //import net.masterthought.dtanks.moveable;
 
@@ -23,6 +26,8 @@ import std.math;
 import std.range;
 
 class CoreBot {
+
+ enum MAX_DELTA = 1.0/0.0;
 
   private Arena arena;
   private Brain brain;
@@ -155,7 +160,7 @@ class CoreBot {
     }
 
     if(!isNaN(command.speed)){
-      this.speed = command.speed;
+      this.speed = new NormalizedAttr().normalizeSpeed(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
     }
 
     if(command.firePower){

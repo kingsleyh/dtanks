@@ -38,7 +38,7 @@ class SuperBot : Brain {
     }
 
      if(sensors.buttonDown(Keyboard.Key.W)){
-     command.speed = 2;
+     command.speed = 20;
     } else if(sensors.buttonDown(Keyboard.Key.S)){
       command.speed = -2;
     } else {
