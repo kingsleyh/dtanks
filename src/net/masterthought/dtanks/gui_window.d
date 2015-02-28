@@ -85,8 +85,11 @@ window.draw(sprite);
 
  foreach(bot ; this.match.bots){
        bot.setGuiWindow(window);
-       window.draw(new GuiBot(botBodyTexture,turretTexture,radarTexture,font,bot));
+       window.draw(new GuiBot(botBodyTexture,turretTexture,radarTexture,font,bot,this.match.bots));
    }
+
+
+
 
    //remove dead shells
    this.match.shells = this.match.shells.filter!(n => !n.isDead()).array;

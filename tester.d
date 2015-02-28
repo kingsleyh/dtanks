@@ -70,9 +70,12 @@ void main(){
   // list = list.filter!(n => n == "1").array;
 
   //writeln("after: ", list);
-real item = 0.174531;
-bool res = !iota(-((PI / 180.0) * 10.0),((PI / 180.0) * 10.0),0.000001).filter!(n => n == item).empty;
-writeln(res);
+//real item = 0.174531;
+//bool res = !iota(-((PI / 180.0) * 10.0),((PI / 180.0) * 10.0),0.000001).filter!(n => n == item).empty;
+//writeln(res);
+
+writeln(round(10.98f));
+
 
  //enum a = [74,190,74].map!(v => v/255.0).array;
 

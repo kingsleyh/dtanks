@@ -2,8 +2,11 @@ module net.masterthought.dtanks.gui.guibot;
 
 import dsfml.graphics;
 import std.conv;
+import std.algorithm;
+import std.array;
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.gui.healthcolorcalculator;
+import net.masterthought.dtanks.heading;
 
 class GuiBot : Drawable {
 
@@ -15,8 +18,9 @@ CoreBot bot;
 float x;
 float y;
 string name;
+CoreBot[] allBots;
 
-this(Texture botBodyTexture, Texture turretTexture, Texture radarTexture,Font font, CoreBot bot){
+this(Texture botBodyTexture, Texture turretTexture, Texture radarTexture,Font font, CoreBot bot, CoreBot[] allBots){
  this.botBodyTexture = botBodyTexture;
  this.turretTexture = turretTexture;
  this.radarTexture = radarTexture;
@@ -25,6 +29,7 @@ this(Texture botBodyTexture, Texture turretTexture, Texture radarTexture,Font fo
  this.x = bot.position.x;
  this.y  = bot.position.y;
  this.name = bot.getName();
+ this.allBots = allBots;
 }
 
   void draw(RenderTarget target, RenderStates states){
@@ -73,6 +78,41 @@ radar.rotation(this.bot.radar.heading.toDegrees());
     auto life = new Text("L: " ~ to!dstring(bot.health),font,12);
     life.position = Vector2f(x-50,y+124);
 
+auto dRadar = new Text("R: " ~ to!dstring(bot.radar.heading.toDegrees()),font,12);
+    dRadar.position = Vector2f(x-50,y+136);
+
+  if(name == "SuperBot"){
+
+    // get other bots
+    CoreBot[] otherBots = allBots.filter!(b => b != bot).array;
+
+    // draw distance lines
+    foreach(tb ; otherBots){
+       auto line = new VertexArray(PrimitiveType.Lines, 2);
+       line.append(Vertex(Vector2f(bot.position.x,bot.position.y), Color(224,224,224)));
+       line.append(Vertex(Vector2f(tb.position.x,tb.position.y), Color.Blue));
+
+      auto botDistance = bot.position.pointDistance(bot.position,tb.position);
+      float midX = (bot.position.x + tb.position.x) / 2;
+      float midY = (bot.position.y + tb.position.y) / 2;
+
+      auto dist = new Text(to!dstring(botDistance),font,9);
+      dist.position = Vector2f(midX,midY);
+       target.draw(dist);
+       target.draw(line);
+
+       //draw radar scope
+   //  float search = Heading.deltaBetweenPoints(bot.position, bot.heading.radians, tb.position);
+   //auto r = new Text("R: " ~ to!dstring(search),font,12);
+   // r.position = Vector2f(x-50,y+136);
+   //target.draw(r);
+
+    }
+
+
+
+  }
+
    target.draw(botName);
    target.draw(botBody);
    target.draw(turret);
@@ -85,8 +125,11 @@ radar.rotation(this.bot.radar.heading.toDegrees());
    target.draw(tHeading);
    target.draw(fpower);
    target.draw(life);
+    target.draw(dRadar);
 
   }
+
+
 
 
 }

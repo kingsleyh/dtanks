@@ -72,6 +72,7 @@ float oneDegree = (PI / 180.0);
     float search = Heading.deltaBetweenPoints(position(),
       this.heading.radians, otherBot.position);
   return first <= search && search < second;
+//return search > first && search < second;
 
  //float oneDegree = (PI / 180.0);
  //float first = -(oneDegree * 10.0);

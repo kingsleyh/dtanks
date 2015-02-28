@@ -60,12 +60,21 @@ this(){
 }
 
 public float delta(float to){
-  float diff = (to = this.radians).abs % FULL_ANGLE;
+  float diff = (to - this.radians).abs % FULL_ANGLE;
   if(diff > PI){
     diff = -(FULL_ANGLE - diff);
   }
   return to < this.radians ? -diff : diff;
 }
+
+
+//public float delta(float to){
+//  float diff = (to = this.radians).abs % FULL_ANGLE;
+//  if(diff > PI){
+//    diff = -(FULL_ANGLE - diff);
+//  }
+//  return to < this.radians ? -diff : diff;
+//}
 
 public Heading clone(){
   return new Heading(this.radians);

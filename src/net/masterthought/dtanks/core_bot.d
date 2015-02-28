@@ -169,11 +169,6 @@ class CoreBot {
   }
 
   public Sensor sensors(){
-
-    writeln("checking attributes");
-     checkAttributes();
-     writeln("finished attribut checking");
-
     Sensor sensor = Sensor();
     sensor.ticks = ticks;
     sensor.health  = health;
