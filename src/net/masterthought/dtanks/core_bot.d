@@ -132,7 +132,9 @@ class CoreBot {
       this.turret.heading = new NormalizedHeading().normalize(this.turret.heading, command.turretHeading,Heading.FULL_RANGE,Configuration().bot().turnStep);
     }
 
+  if(!isNaN(command.speed)){
    this.speed = new NormalizedSpeed().normalize(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
+  }
 
     if(command.firePower){
       this.firePower = command.firePower;
