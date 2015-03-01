@@ -1,4 +1,4 @@
-module net.masterthought.dtanks.normalizedattr;
+module net.masterthought.dtanks.normalizedspeed;
 
 import std.algorithm;
 import std.math;
@@ -8,9 +8,9 @@ import std.conv;
 import std.range;
 import std.array;
 
-class NormalizedAttr{
+class NormalizedSpeed{
 
-public double normalizeSpeed(double currentValue, double newValue, double[] speeds, double maxDelta){
+public double normalize(double currentValue, double newValue, double[] speeds, double maxDelta){
   return enforceRange(speeds,enforceDelta(currentValue, newValue, maxDelta));
 }
 

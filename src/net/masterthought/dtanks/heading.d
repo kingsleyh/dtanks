@@ -3,6 +3,7 @@ module net.masterthought.dtanks.heading;
 import std.math;
 import std.range;
 import std.conv;
+import std.array;
 import std.random;
 
 import net.masterthought.dtanks.point;
@@ -13,7 +14,7 @@ enum FULL_ANGLE = PI * 2.0;
 enum HALF_ANGLE = PI;
 enum EIGHTH_ANGLE = PI / 4.0;
 enum ONE_DEGREE = FULL_ANGLE / 360.0;
-enum FULL_RANGE =  iota(0.0,FULL_ANGLE);
+enum FULL_RANGE =  [-360.0,360.0];
 
 enum NORTH = 0.0;
 alias NORTH N;

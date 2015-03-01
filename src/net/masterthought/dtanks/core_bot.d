@@ -9,7 +9,8 @@ import net.masterthought.dtanks.bot.turret;
 import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 import net.masterthought.dtanks.samples.superbot;
-import net.masterthought.dtanks.normalizedattr;
+import net.masterthought.dtanks.normalizedspeed;
+import net.masterthought.dtanks.normalizedheading;
 import net.masterthought.dtanks.configuration;
 
 import dsfml.graphics;
@@ -120,14 +121,14 @@ class CoreBot {
     writeln(command);
 
     if(command.heading){
-      this.heading = command.heading;
+      this.heading = new NormalizedHeading().normalize(this.heading,command.heading, Heading.FULL_RANGE,Configuration().bot().turnStep);
     }
 
     if(command.turretHeading){
       this.turret.setHeading(command.turretHeading.radians);
     }
 
-   this.speed = new NormalizedAttr().normalizeSpeed(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
+   this.speed = new NormalizedSpeed().normalize(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
 
     if(command.firePower){
       this.firePower = command.firePower;
