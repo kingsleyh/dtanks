@@ -11,11 +11,11 @@ struct Configuration{
   struct bot{
    int radius = 19;
    int healthReductionOnException = 2;
-   int[] health = iota(0,100).array;
-   int[] speed = iota(-3,3).array;
-   float speedStep = 0.05;
-   float turnStep = ONE_DEGREE *  1.5;
-   int[] firePower = iota(1,5).array;
+   int[] health = iota(0,101).array;
+   double[] speed = iota(-3.0,4.0).array;
+   double speedStep = 0.05;
+   float turnStep = ONE_DEGREE *  1.5f;
+   int[] firePower = iota(1,6).array;
    int gunEnergyMax = 10;
    int gunEnergyFactor = 10;
   }

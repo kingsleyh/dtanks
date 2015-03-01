@@ -24,6 +24,7 @@ import std.stdio;
 import core.thread;
 import std.math;
 import std.range;
+import std.conv;
 
 class CoreBot {
 
@@ -39,7 +40,7 @@ class CoreBot {
   public int firePower;
   public int gunEnergy;
 
-  private float speed;
+  public double speed;
   public Heading heading;
   public Point position;
   //public Heading radarHeading;
@@ -54,7 +55,7 @@ class CoreBot {
 
      this.position = Point(0, 0, this.arena);
      this.health = 100;
-     this.speed = 0;
+     this.speed = 0.0;
      this.firePower = 0;
      this.gunEnergy = 10;
      this.heading  = new Heading();
@@ -131,7 +132,7 @@ class CoreBot {
     this.ticks += 1;
     this.tickBrain();
     // update bot position
-    this.position = this.position.move(this.heading.radians,this.speed,true);
+    this.position = this.position.move(this.heading.radians,to!double(this.speed),true);
 
     adjustFirePower();
   }
@@ -159,9 +160,7 @@ class CoreBot {
       this.turret.setHeading(command.turretHeading.radians);
     }
 
-    if(!isNaN(command.speed)){
-      this.speed = new NormalizedAttr().normalizeSpeed(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
-    }
+   this.speed = new NormalizedAttr().normalizeSpeed(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
 
     if(command.firePower){
       this.firePower = command.firePower;
@@ -177,7 +176,7 @@ class CoreBot {
     Sensor sensor = Sensor();
     sensor.ticks = ticks;
     sensor.health  = health;
-    sensor.speed = speed;
+    sensor.speed = to!double(speed);
     sensor.position = position;
     sensor.heading = this.heading;
     sensor.radar = this.radar;

@@ -76,13 +76,13 @@ public string setIt(string num){
 
 void main(){
 
- int[] a = [1,2,6,2,9,4,3,0];
-auto s  = a.reduce!(min,max);
-
-
- writeln(s[1]);
+//writeln(iota(-3,4).array);
 
   //string[] list = ["1","2","3","4"];
+
+double a = 2;
+double b = 0.05;
+writeln(a+ b);
 
   //writeln("before: ",list);
 

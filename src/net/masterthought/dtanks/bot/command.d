@@ -4,7 +4,7 @@ import net.masterthought.dtanks.heading;
 
 struct Command {
 
-  float speed;
+  double speed;
   Heading heading;
   Heading radarHeading;
   Heading turretHeading;

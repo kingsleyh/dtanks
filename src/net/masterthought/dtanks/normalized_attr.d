@@ -3,39 +3,53 @@ module net.masterthought.dtanks.normalizedattr;
 import std.algorithm;
 import std.math;
 import std.stdio;
+import std.conv;
+
+import std.range;
+import std.array;
 
 class NormalizedAttr{
 
-public float normalizeSpeed(float currentValue, float newValue, int[] speeds, float maxDelta){
+public double normalizeSpeed(double currentValue, double newValue, double[] speeds, double maxDelta){
   return enforceRange(speeds,enforceDelta(currentValue, newValue, maxDelta));
 }
 
-private float enforceDelta(float currentValue, float newValue, float maxDelta){
-  float currentDelta = delta(currentValue, newValue);
-   writeln("current delta: ", currentDelta, " max delta: ", maxDelta);
-   writeln("cur val: ", currentValue, "new val: ", newValue);
+private double enforceDelta(double currentValue, double newValue, double maxDelta){
+  double currentDelta = this.delta(currentValue, newValue);
    if(currentDelta.abs > maxDelta){
-     return currentDelta > 0 ? currentValue + maxDelta : currentValue - maxDelta;
+      return currentDelta > 0 ? currentValue + maxDelta : currentValue - maxDelta;
    } else {
     return newValue;
    }
 }
 
-private float delta(float currentValue, float newValue){
-  if(currentValue){
-      return newValue - currentValue;
+private double delta(double currentValue, double newValue){
+  if(!isNaN(currentValue)){
+      return to!double(newValue) - to!double(currentValue);
     } else {
        return 0;
     }
 }
 
-private float enforceRange(int[] range, float value){
-  if(canFind(range,value)){
+private double enforceRange(double[] range, double value){
+auto s = range.reduce!(min,max);
+double min = s[0];
+double max = s[1];
+  if(min <= value && value <  max){
     return value;
   } else {
-    auto s = range.reduce!(min,max);
-    return value > s[1] ? s[1] : s[0];
+    return value > max ? max : min;
   }
 }
 
 }
+
+//void main(){
+//  double[] range = iota(-3.0,4.0).array;
+//  double step = 0.05;
+//  double speed = new NormalizedAttr().normalizeSpeed(2,3,range,step);
+
+//  //bool res = canFind(range,2.5);
+//  writeln(speed);
+
+//}
