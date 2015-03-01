@@ -11,12 +11,8 @@ import net.masterthought.dtanks.gui.guibot;
 import net.masterthought.dtanks.gui.guishell;
 import net.masterthought.dtanks.gui.guiexplosion;
 import net.masterthought.dtanks.match;
+import net.masterthought.dtanks.gui.skins;
 
-struct BotSkin{
-  Texture body;
-  Texture turret;
-  Texture radar;
-}
 
 class GuiWindow{
 
@@ -36,18 +32,12 @@ settings.antialiasingLevel = 8;
  auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"DTanks", Window.Style.DefaultStyle, settings);
   window.setFramerateLimit(60);
 
-string[] availableSkins = ["default","blue"];
+string[] availableSkins = ["blue"];
 
 foreach(s; availableSkins){
+
   auto botBodyTexture = new Texture();
     if(!botBodyTexture.loadFromFile("resources/skins/" ~ s ~ "/body.png"))
-        return;
-}
-
-
-
-      auto shellTexture = new Texture();
-    if(!shellTexture.loadFromFile("resources/bullet.png"))
         return;
 
 auto turretTexture = new Texture();
@@ -56,6 +46,14 @@ auto turretTexture = new Texture();
 
       auto radarTexture = new Texture();
     if(!radarTexture.loadFromFile("resources/skins/blue/radar.png"))
+        return;
+ skins[s] = BotSkin(botBodyTexture, turretTexture, radarTexture);
+
+}
+
+
+      auto shellTexture = new Texture();
+    if(!shellTexture.loadFromFile("resources/bullet.png"))
         return;
 
        auto font = new Font();
@@ -101,7 +99,7 @@ window.draw(sprite);
 
  foreach(bot ; this.match.bots){
        bot.setGuiWindow(window);
-       window.draw(new GuiBot(botBodyTexture,turretTexture,radarTexture,font,bot,this.match.bots));
+       window.draw(new GuiBot(skins,font,bot,this.match.bots));
    }
 
 

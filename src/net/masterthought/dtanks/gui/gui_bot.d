@@ -7,12 +7,14 @@ import std.array;
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.gui.healthcolorcalculator;
 import net.masterthought.dtanks.heading;
+import net.masterthought.dtanks.gui.skins;
 
 class GuiBot : Drawable {
 
 Texture botBodyTexture;
 Texture turretTexture;
 Texture radarTexture;
+BotSkin[string] skin;
 Font font;
 CoreBot bot;
 float x;
@@ -20,10 +22,11 @@ float y;
 string name;
 CoreBot[] allBots;
 
-this(Texture botBodyTexture, Texture turretTexture, Texture radarTexture,Font font, CoreBot bot, CoreBot[] allBots){
- this.botBodyTexture = botBodyTexture;
- this.turretTexture = turretTexture;
- this.radarTexture = radarTexture;
+this(BotSkin[string] skin,Font font, CoreBot bot, CoreBot[] allBots){
+ this.skin = skin;
+ this.botBodyTexture = skin["blue"].tankBody;
+ this.turretTexture = skin["blue"].tankTurret;
+ this.radarTexture = skin["blue"].tankRadar;
  this.font = font;
  this.bot = bot;
  this.x = bot.position.x;
