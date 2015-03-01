@@ -2,21 +2,15 @@ module net.masterthought.dtanks.corebot;
 
 import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.heading;
-
 import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.bot.radar;
 import net.masterthought.dtanks.bot.turret;
-
 import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
-
 import net.masterthought.dtanks.samples.superbot;
 import net.masterthought.dtanks.normalizedattr;
-
 import net.masterthought.dtanks.configuration;
-
-//import net.masterthought.dtanks.moveable;
 
 import dsfml.graphics;
 
@@ -36,36 +30,26 @@ class CoreBot {
   public Turret turret;
   private int ticks;
   public int health;
-
   public int firePower;
   public int gunEnergy;
-
   public double speed;
   public Heading heading;
   public Point position;
-  //public Heading radarHeading;
-
   public Window guiWindow;
 
   this(Arena arena, Brain brain){
      this.arena = arena;
-     //this.brain = new brainKlass(this.arena);
      this.brain = brain;
      this.ticks = 0;
-
      this.position = Point(0, 0, this.arena);
      this.health = 100;
      this.speed = 0.0;
      this.firePower = 0;
      this.gunEnergy = 10;
      this.heading  = new Heading();
-
      this.radar = new Radar(this, this.heading.clone());
      this.turret = new Turret(this.heading.clone());
-
   }
-
- //mixin Moveable;
 
   public static CoreBot newRandomLocation(Arena arena, Brain brain){
      CoreBot bot = new CoreBot(arena,brain);
@@ -75,22 +59,7 @@ class CoreBot {
      bot.turret.setHeading(randHeading.radians);
      bot.radar.setHeading(randHeading.radians);
      bot.brain.setSensors(bot.sensors());
-     //bot.radarHeading = randHeading;
-     //core.thread.Thread.sleep( dur!("seconds")( 10 ) );
      return bot;
-  }
-
-  private void checkAttributes(){
-     writeln(ticks);
-    writeln(health);
-   writeln(speed);
-    writeln(position);
-    writeln(heading);
-   writeln(radar.getReflections());
-    writeln(radar.heading);
-    writeln(turret.getHeading());
-   writeln(guiWindow);
-   //core.thread.Thread.sleep( dur!("seconds")( 10 ) );
   }
 
   public string getName(){
@@ -131,9 +100,7 @@ class CoreBot {
   public void tick(){
     this.ticks += 1;
     this.tickBrain();
-    // update bot position
     this.position = this.position.move(this.heading.radians,to!double(this.speed),true);
-
     adjustFirePower();
   }
 
@@ -176,16 +143,13 @@ class CoreBot {
     Sensor sensor = Sensor();
     sensor.ticks = ticks;
     sensor.health  = health;
-    sensor.speed = to!double(speed);
+    sensor.speed = speed;
     sensor.position = position;
     sensor.heading = this.heading;
     sensor.radar = this.radar;
     sensor.radarHeading = radar.heading;
     sensor.turretHeading = turret.getHeading();
     sensor.guiWindow = guiWindow;
-
-    writeln("checking radar: ");
-    writeln(sensor.radar.getReflections());
     return sensor;
   }
 }
