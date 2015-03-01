@@ -57,7 +57,7 @@ class CoreBot {
      bot.position = Point.rand(arena);
      Heading randHeading = Heading.rand();
      bot.heading = randHeading;
-     bot.turret.setHeading(randHeading.radians);
+     bot.turret.heading = randHeading;
      bot.radar.setHeading(randHeading.radians);
      bot.brain.setSensors(bot.sensors());
      return bot;
@@ -125,7 +125,7 @@ class CoreBot {
     }
 
     if(command.turretHeading){
-      this.turret.setHeading(command.turretHeading.radians);
+      this.turret.heading = new NormalizedHeading().normalize(this.turret.heading, command.turretHeading,Heading.FULL_RANGE,Configuration().bot().turnStep);
     }
 
    this.speed = new NormalizedSpeed().normalize(this.speed,command.speed, Configuration().bot().speed,Configuration().bot().speedStep);
@@ -149,7 +149,7 @@ class CoreBot {
     sensor.heading = this.heading;
     sensor.radar = this.radar;
     sensor.radarHeading = radar.heading;
-    sensor.turretHeading = turret.getHeading();
+    sensor.turretHeading = turret.heading;
     sensor.guiWindow = guiWindow;
     return sensor;
   }

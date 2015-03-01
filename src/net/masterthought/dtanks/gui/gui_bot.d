@@ -43,7 +43,7 @@ this(Texture botBodyTexture, Texture turretTexture, Texture radarTexture,Font fo
 auto turret = new Sprite(turretTexture);
 turret.position = Vector2f(x,y);
 turret.origin(Vector2f(10,27));
-turret.rotation(this.bot.turret.getHeading().toDegrees());
+turret.rotation(this.bot.turret.heading.toDegrees());
 
 auto radar = new Sprite(radarTexture);
 radar.position = Vector2f(x,y);
@@ -69,7 +69,7 @@ radar.rotation(this.bot.radar.heading.toDegrees());
      auto dHeading = new Text("H: " ~ to!dstring(bot.heading.toDegrees()),font,12);
     dHeading.position = Vector2f(x-50,y+86);
 
-    auto tHeading = new Text("T: " ~ to!dstring(bot.turret.getHeading.toDegrees()),font,12);
+    auto tHeading = new Text("T: " ~ to!dstring(bot.turret.heading.toDegrees()),font,12);
     tHeading.position = Vector2f(x-50,y+99);
 
     auto fpower = new Text("F: " ~ to!dstring(bot.firePower),font,12);

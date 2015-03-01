@@ -48,7 +48,7 @@ writeln("target: ", reflection.heading.toDegrees());
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
    command.speed = reflection.distance > 200 ? 2 : 2 / 2.0;
-   if(reflection.heading.delta(sensors.turretHeading.radians).abs < TURRET_FIRE_RANGE){
+   if((reflection.heading.delta(sensors.turretHeading.radians)).abs < TURRET_FIRE_RANGE){
     command.fire(reflection.distance > 200 ? 5 : 1);
    }
  }
