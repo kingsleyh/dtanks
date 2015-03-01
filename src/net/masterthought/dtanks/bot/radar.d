@@ -26,8 +26,8 @@ struct Reflection{
 
 class Radar {
 
-CoreBot bot;
-Heading heading;
+private CoreBot bot;
+public Heading heading;
 private Reflection[] reflections;
 
   this(CoreBot bot, Heading heading){
@@ -40,9 +40,9 @@ private Reflection[] reflections;
     return this.bot.position;
   }
 
-  public void setHeading(float value){
-     this.heading = new Heading(value);
-  }
+  //public void setHeading(float value){
+  //   this.heading = new Heading(value);
+  //}
 
   public bool isEmpty(){
     return this.reflections.empty;
@@ -72,14 +72,7 @@ float oneDegree = (PI / 180.0);
     float search = Heading.deltaBetweenPoints(position(),
       this.heading.radians, otherBot.position);
   return first <= search && search < second;
-//return search > first && search < second;
 
- //float oneDegree = (PI / 180.0);
- //float first = -(oneDegree * 10.0);
- //float second = (oneDegree * 10.0);
- //string[] r = iota(first,second,0.000001).map!(n => to!string(n)).array;
- //float search = Heading.deltaBetweenPoints(position(),this.heading.radians,otherBot.position);
- //return r.canFind(to!string(search));
 }
 
 }

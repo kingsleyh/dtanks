@@ -12,9 +12,16 @@ import net.masterthought.dtanks.gui.guishell;
 import net.masterthought.dtanks.gui.guiexplosion;
 import net.masterthought.dtanks.match;
 
+struct BotSkin{
+  Texture body;
+  Texture turret;
+  Texture radar;
+}
+
 class GuiWindow{
 
 private Match match;
+private BotSkin[string] skins;
 
 
 this(Match match){
@@ -26,23 +33,29 @@ this(Match match){
 ContextSettings settings;
 settings.antialiasingLevel = 8;
 
- auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"Hello DSFML!", Window.Style.DefaultStyle, settings);
+ auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"DTanks", Window.Style.DefaultStyle, settings);
   window.setFramerateLimit(60);
 
-auto botBodyTexture = new Texture();
-    if(!botBodyTexture.loadFromFile("resources/body.png"))
+string[] availableSkins = ["default","blue"];
+
+foreach(s; availableSkins){
+  auto botBodyTexture = new Texture();
+    if(!botBodyTexture.loadFromFile("resources/skins/" ~ s ~ "/body.png"))
         return;
+}
+
+
 
       auto shellTexture = new Texture();
     if(!shellTexture.loadFromFile("resources/bullet.png"))
         return;
 
 auto turretTexture = new Texture();
-    if(!turretTexture.loadFromFile("resources/turret.png"))
+    if(!turretTexture.loadFromFile("resources/skins/blue/turret.png"))
         return;
 
       auto radarTexture = new Texture();
-    if(!radarTexture.loadFromFile("resources/radar.png"))
+    if(!radarTexture.loadFromFile("resources/skins/blue/radar.png"))
         return;
 
        auto font = new Font();

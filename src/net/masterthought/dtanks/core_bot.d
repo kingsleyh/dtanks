@@ -58,7 +58,7 @@ class CoreBot {
      Heading randHeading = Heading.rand();
      bot.heading = randHeading;
      bot.turret.heading = randHeading;
-     bot.radar.setHeading(randHeading.radians);
+     bot.radar.heading = randHeading;
      bot.brain.setSensors(bot.sensors());
      return bot;
   }
@@ -135,7 +135,7 @@ class CoreBot {
     }
 
     if(command.radarHeading){
-      this.radar.setHeading(command.radarHeading.radians);
+      this.radar.heading = command.radarHeading;
     }
 
   }
