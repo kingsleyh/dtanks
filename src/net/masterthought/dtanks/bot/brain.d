@@ -36,6 +36,10 @@ class Brain {
     return "no name";
   }
 
+  public string skin(){
+    return "blue";
+  }
+
 }
 
 

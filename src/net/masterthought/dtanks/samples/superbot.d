@@ -66,4 +66,8 @@ class SuperBot : Brain {
     return "SuperBot";
   }
 
+  override public string skin(){
+    return "purple";
+  }
+
 }

@@ -24,9 +24,9 @@ CoreBot[] allBots;
 
 this(BotSkin[string] skin,Font font, CoreBot bot, CoreBot[] allBots){
  this.skin = skin;
- this.botBodyTexture = skin["blue"].tankBody;
- this.turretTexture = skin["blue"].tankTurret;
- this.radarTexture = skin["blue"].tankRadar;
+ this.botBodyTexture = skin[bot.getSkin()].tankBody;
+ this.turretTexture = skin[bot.getSkin()].tankTurret;
+ this.radarTexture = skin[bot.getSkin()].tankRadar;
  this.font = font;
  this.bot = bot;
  this.x = bot.position.x;

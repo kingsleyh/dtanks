@@ -32,7 +32,7 @@ settings.antialiasingLevel = 8;
  auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"DTanks", Window.Style.DefaultStyle, settings);
   window.setFramerateLimit(60);
 
-string[] availableSkins = ["blue"];
+string[] availableSkins = ["black","blue","green","orange","pink","purple","purple2","red","white","yellow"];
 
 foreach(s; availableSkins){
 
@@ -41,11 +41,11 @@ foreach(s; availableSkins){
         return;
 
 auto turretTexture = new Texture();
-    if(!turretTexture.loadFromFile("resources/skins/blue/turret.png"))
+    if(!turretTexture.loadFromFile("resources/skins/" ~ s ~ "/turret.png"))
         return;
 
       auto radarTexture = new Texture();
-    if(!radarTexture.loadFromFile("resources/skins/blue/radar.png"))
+    if(!radarTexture.loadFromFile("resources/skins/" ~ s ~ "/radar.png"))
         return;
  skins[s] = BotSkin(botBodyTexture, turretTexture, radarTexture);
 

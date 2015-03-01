@@ -67,6 +67,10 @@ class CoreBot {
     return this.brain.name();
   }
 
+  public string getSkin(){
+    return this.brain.skin();
+  }
+
   public void setHealth(int value){
     this.health = value;
   }
