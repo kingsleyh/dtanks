@@ -23,7 +23,10 @@ this(Match match){
 
  public void execute(){
 
- auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"Hello DSFML!");
+ContextSettings settings;
+settings.antialiasingLevel = 8;
+
+ auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"Hello DSFML!", Window.Style.DefaultStyle, settings);
   window.setFramerateLimit(60);
 
 auto botBodyTexture = new Texture();

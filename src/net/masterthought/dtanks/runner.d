@@ -31,7 +31,8 @@ addBots();
 
   public void addBots(){
     //Brain[] brains = [new SuperBot(this.match.arena),new BasicBot(this.match.arena), new SeeknDestroy(this.match.arena)];
-    Brain[] brains = [new SeeknDestroy(this.match.arena), new SeeknDestroy(this.match.arena)];
+    //Brain[] brains = [new SeeknDestroy(this.match.arena), new SeeknDestroy(this.match.arena)];
+    Brain[] brains = [new SuperBot(this.match.arena), new SeeknDestroy(this.match.arena)];
     CoreBot[] bots = [];
     foreach(brain ; brains){
        bots ~= CoreBot.newRandomLocation(this.match.arena, brain);

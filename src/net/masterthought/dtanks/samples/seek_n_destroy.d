@@ -48,8 +48,11 @@ writeln("target: ", reflection.heading.toDegrees());
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
    command.speed = reflection.distance > 200 ? 2 : 2 / 2.0;
+
+   writeln("refletion delta: ",reflection.heading.delta(sensors.turretHeading.radians).abs);
+
    if((reflection.heading.delta(sensors.turretHeading.radians)).abs < TURRET_FIRE_RANGE){
-    command.fire(reflection.distance > 200 ? 5 : 1);
+    //command.fire(reflection.distance > 200 ? 5 : 1);
    }
  }
 
@@ -57,7 +60,7 @@ writeln("target: ", reflection.heading.toDegrees());
     writeln("seeking lock");
     if(sensors.position.onWall()){
       writeln("ON WALL--------------");
-      desiredHeading = new Heading(sensors.heading.radians + Heading.ONE_DEGREE * 3);
+      desiredHeading = new Heading(sensors.heading.radians + Heading.ONE_DEGREE * 2);
     }
       command.radarHeading = new Heading(sensors.radar.heading.radians + Heading.ONE_DEGREE * 3);
     command.speed = 1;
