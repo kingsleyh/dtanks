@@ -6,6 +6,9 @@ import std.conv;
 import std.math;
 import std.range;
 import std.traits;
+import std.file;
+import std.regex;
+import std.string;
 
 class Foo {
 
@@ -76,13 +79,29 @@ public string setIt(string num){
 
 void main(){
 
+
+ auto content = to!string(read("samples/staticbot.d"));
+
+string[] lines = content.split("\n");
+
+string klass;
+foreach(line ; lines){
+  auto m = line.match(r"class(.+):.+Brain");
+  if(m){
+    klass = m.captures[1].removechars(" ");
+    break;
+  }
+}
+
+writeln(klass);
+
 //writeln(iota(-3,4).array);
 
   //string[] list = ["1","2","3","4"];
 
-double a = 2;
-double b = 0.05;
-writeln(a+ b);
+//int r = mixin("1+1");
+
+//writeln(r);
 
   //writeln("before: ",list);
 

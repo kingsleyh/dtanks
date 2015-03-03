@@ -15,7 +15,10 @@ import std.array;
 
 class SeeknDestroy : Brain {
 
-   this(Arena arena){
+    string botSkin;
+
+   this(Arena arena,string botSkin){
+      this.botSkin = botSkin;
     super(arena);
    }
 
@@ -52,7 +55,7 @@ writeln("target: ", reflection.heading.toDegrees());
    writeln("refletion delta: ",reflection.heading.delta(sensors.turretHeading.radians).abs);
 
    if((reflection.heading.delta(sensors.turretHeading.radians)).abs < TURRET_FIRE_RANGE){
-    //command.fire(reflection.distance > 200 ? 5 : 1);
+    command.fire(reflection.distance > 200 ? 5 : 1);
    }
  }
 
@@ -92,8 +95,16 @@ writeln("target: ", reflection.heading.toDegrees());
     return gotLock;
   }
 
+  //override public string name(){
+  //  return "Seek&Destroy";
+  //}
+
   override public string name(){
-    return "Seek&Destroy";
+    return botSkin ~ "_tank";
+  }
+
+  override public string skin(){
+    return botSkin;
   }
 
 }

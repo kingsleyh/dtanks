@@ -63,58 +63,58 @@ radar.rotation(this.bot.radar.heading.toDegrees());
     botName.position = Vector2f(x-50,y+45);
 
     // DEBUG
-    auto posX = new Text("X: " ~ to!dstring(x),font,12);
-    posX.position = Vector2f(x-50,y+60);
+    //auto posX = new Text("X: " ~ to!dstring(x),font,12);
+    //posX.position = Vector2f(x-50,y+60);
 
-    auto posY = new Text("Y: " ~ to!dstring(y),font,12);
-    posY.position = Vector2f(x-50,y+73);
+    //auto posY = new Text("Y: " ~ to!dstring(y),font,12);
+    //posY.position = Vector2f(x-50,y+73);
 
-     auto dHeading = new Text("H: " ~ to!dstring(bot.heading.toDegrees()),font,12);
-    dHeading.position = Vector2f(x-50,y+86);
+    // auto dHeading = new Text("H: " ~ to!dstring(bot.heading.toDegrees()),font,12);
+    //dHeading.position = Vector2f(x-50,y+86);
 
-    auto tHeading = new Text("T: " ~ to!dstring(bot.turret.heading.toDegrees()),font,12);
-    tHeading.position = Vector2f(x-50,y+99);
+//    auto tHeading = new Text("T: " ~ to!dstring(bot.turret.heading.toDegrees()),font,12);
+//    tHeading.position = Vector2f(x-50,y+99);
 
-    auto fpower = new Text("F: " ~ to!dstring(bot.firePower),font,12);
-    fpower.position = Vector2f(x-50,y+112);
+//    auto fpower = new Text("F: " ~ to!dstring(bot.firePower),font,12);
+//    fpower.position = Vector2f(x-50,y+112);
 
-    auto life = new Text("L: " ~ to!dstring(bot.health),font,12);
-    life.position = Vector2f(x-50,y+124);
+//    auto life = new Text("L: " ~ to!dstring(bot.health),font,12);
+//    life.position = Vector2f(x-50,y+124);
 
-auto dRadar = new Text("R: " ~ to!dstring(bot.radar.heading.toDegrees()),font,12);
-    dRadar.position = Vector2f(x-50,y+136);
+//auto dRadar = new Text("R: " ~ to!dstring(bot.radar.heading.toDegrees()),font,12);
+//    dRadar.position = Vector2f(x-50,y+136);
 
-  if(name == "SuperBot"){
+  //if(name == "SuperBot"){
 
     // get other bots
-    CoreBot[] otherBots = allBots.filter!(b => b != bot).array;
+    //CoreBot[] otherBots = allBots.filter!(b => b != bot).array;
 
     // draw distance lines
-    foreach(tb ; otherBots){
-       auto line = new VertexArray(PrimitiveType.Lines, 2);
-       line.append(Vertex(Vector2f(bot.position.x,bot.position.y), Color(224,224,224)));
-       line.append(Vertex(Vector2f(tb.position.x,tb.position.y), Color.Blue));
+    //foreach(tb ; otherBots){
+    //   auto line = new VertexArray(PrimitiveType.Lines, 2);
+    //   line.append(Vertex(Vector2f(bot.position.x,bot.position.y), Color(224,224,224)));
+    //   line.append(Vertex(Vector2f(tb.position.x,tb.position.y), Color.Blue));
 
-      auto botDistance = bot.position.pointDistance(bot.position,tb.position);
-      float midX = (bot.position.x + tb.position.x) / 2;
-      float midY = (bot.position.y + tb.position.y) / 2;
+    //  auto botDistance = bot.position.pointDistance(bot.position,tb.position);
+    //  float midX = (bot.position.x + tb.position.x) / 2;
+    //  float midY = (bot.position.y + tb.position.y) / 2;
 
-      auto dist = new Text(to!dstring(botDistance),font,9);
-      dist.position = Vector2f(midX,midY);
-       target.draw(dist);
-       target.draw(line);
+    //  auto dist = new Text(to!dstring(botDistance),font,9);
+    //  dist.position = Vector2f(midX,midY);
+    //   target.draw(dist);
+    //   target.draw(line);
 
-       //draw radar scope
-   //  float search = Heading.deltaBetweenPoints(bot.position, bot.heading.radians, tb.position);
-   //auto r = new Text("R: " ~ to!dstring(search),font,12);
-   // r.position = Vector2f(x-50,y+136);
-   //target.draw(r);
+  //     //draw radar scope
+  // //  float search = Heading.deltaBetweenPoints(bot.position, bot.heading.radians, tb.position);
+  // //auto r = new Text("R: " ~ to!dstring(search),font,12);
+  // // r.position = Vector2f(x-50,y+136);
+  // //target.draw(r);
 
-    }
+    //}
 
 
 
-  }
+  //}
 
    target.draw(botName);
    target.draw(botBody);
@@ -122,13 +122,13 @@ auto dRadar = new Text("R: " ~ to!dstring(bot.radar.heading.toDegrees()),font,12
    target.draw(radar);
    target.draw(healthBar);
 
-   target.draw(posX);
-   target.draw(posY);
-   target.draw(dHeading);
-   target.draw(tHeading);
-   target.draw(fpower);
-   target.draw(life);
-    target.draw(dRadar);
+   //target.draw(posX);
+   //target.draw(posY);
+   //target.draw(dHeading);
+   //target.draw(tHeading);
+   //target.draw(fpower);
+   //target.draw(life);
+   // target.draw(dRadar);
 
   }
 
