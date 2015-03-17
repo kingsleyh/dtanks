@@ -14,6 +14,8 @@ import std.stdio;
 
 class KeyboardBot : Brain {
 
+    SkinColor skinColor = SkinColor.blue;
+
    static this(){
      Brain.add(new KeyboardBot());
    }
@@ -53,6 +55,11 @@ class KeyboardBot : Brain {
       command.radarHeading = new Heading(sensors.radar.heading.radians + Heading.ONE_DEGREE * 3);
     }
 
+
+   if(sensors.buttonDown(Keyboard.Key.C)){
+     skinColor = uniform!SkinColor();
+    }
+
     return command;
   }
 
@@ -61,7 +68,7 @@ class KeyboardBot : Brain {
   }
 
   override public SkinColor skin(){
-    return SkinColor.green;
+    return skinColor;
   }
 
 }
