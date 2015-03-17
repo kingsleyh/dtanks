@@ -5,6 +5,7 @@ import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.shell;
 import net.masterthought.dtanks.point;
 import net.masterthought.dtanks.explosion;
+import net.masterthought.dtanks.properties;
 
 import std.stdio;
 import std.array;
@@ -13,6 +14,7 @@ import std.algorithm;
 class Match {
 
  public Arena arena;
+ private Properties props;
  private int maxTicks;
  private bool teams;
  public int ticks;
@@ -21,12 +23,13 @@ class Match {
  public Shell[] shells;
  public Explosion[] explosions;
 
- this(Arena arena){
+ this(Arena arena, Properties props){
+    this.props = props;
     this.arena = arena;
     this.ticks = 0;
     this.stopped = false;
     this.bots = [];
-    this.maxTicks = 6000;
+    this.maxTicks = props.maxTicks;
  }
 
  public void setTeams(bool value){

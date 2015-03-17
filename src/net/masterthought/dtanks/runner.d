@@ -6,6 +6,7 @@ import net.masterthought.dtanks.guiwindow;
 import net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.gameresult;
+import net.masterthought.dtanks.properties;
 
 import std.stdio;
 
@@ -13,9 +14,11 @@ class Runner {
 
   private Match match;
   static Brain[] brains;
+  Properties props;
 
-  this(int width, int height){
-     this.match = new Match(Arena(width,height));
+  this(){
+     props = Properties.all;
+     this.match = new Match(Arena(props.arenaWidth,props.arenaHeight),props);
   }
 
 public static addBrain(Brain brain){
@@ -30,15 +33,16 @@ public static addBrain(Brain brain){
     }
     this.match.addBots(bots);
 
-   //GuiWindow gui = new GuiWindow(this.match);
-   //gui.execute();
-
-   match.start();
+  if(props.headless){
+     match.start();
+   } else {
+     GuiWindow gui = new GuiWindow(this.match);
+     gui.execute();
+   }
 
    GameResult result = new GameResult(match);
    result.display();
 
-  //match.start();
   }
 
 }

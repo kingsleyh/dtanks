@@ -1,0 +1,8 @@
+{
+  "maxTicks":7000,
+  "headless":true,
+  "arena":{
+     "width":1200,
+    "height":700
+  }
+}

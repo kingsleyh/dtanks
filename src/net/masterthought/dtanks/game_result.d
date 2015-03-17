@@ -3,6 +3,7 @@ module net.masterthought.dtanks.gameresult;
 import net.masterthought.dtanks.match;
 import net.masterthought.dtanks.corebot;
 import std.stdio;
+import std.algorithm;
 
 class GameResult{
 
@@ -22,6 +23,8 @@ class GameResult{
 
      writeln("Ticks: ", match.ticks);
      writeln("Survivors");
+
+     multiSort!("a.health > b.health")(bots);
 
      foreach(bot ; bots){
         writeln(bot.brain.name, " health: ", bot.health);
