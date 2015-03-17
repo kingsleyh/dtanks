@@ -8,7 +8,6 @@ import net.masterthought.dtanks.bot.radar;
 import net.masterthought.dtanks.bot.turret;
 import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
-import net.masterthought.dtanks.samples.superbot;
 import net.masterthought.dtanks.normalizedspeed;
 import net.masterthought.dtanks.normalizedheading;
 import net.masterthought.dtanks.configuration;
