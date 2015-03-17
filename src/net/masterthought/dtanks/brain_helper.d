@@ -43,7 +43,7 @@ public Heading currentTurretHeadingPlusDegrees(int value){
   return new Heading(sensors.turretHeading.radians + Heading.ONE_DEGREE * value);
 }
 
-public bool reachedTickInterval(int interval, Sensor sensors){
+public bool reachedTickInterval(int interval){
   return sensors.ticks % interval == 0;
 }
 

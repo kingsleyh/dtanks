@@ -22,12 +22,12 @@ class Camper : Brain {
 
  enum TURRET_FIRE_RANGE = Heading.ONE_DEGREE * 1.0;
 
-
    static this(){
      Brain.add(new Camper());
    }
 
   override public Command tick(Sensor sensors){
+    this.sensors = sensors;
     hideInCorners(sensors);
     //Reflection[] targets = nearestTarget(sensors);
 
@@ -62,7 +62,7 @@ Point[] corners = [
  //   NW = Point(0,0)
  //}
 
-  if(reachedTickInterval(600, sensors)){
+  if(reachedTickInterval(600)){
     moveToCorner(randomSample(corners,1).front, sensors);
   }
 }
