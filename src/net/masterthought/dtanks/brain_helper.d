@@ -43,6 +43,10 @@ public Heading currentTurretHeadingPlusDegrees(int value){
   return new Heading(sensors.turretHeading.radians + Heading.ONE_DEGREE * value);
 }
 
+public bool reachedTickInterval(int interval, Sensor sensors){
+  return sensors.ticks % interval == 0;
+}
+
 @property public bool isOnWall(){
   return sensors.position.onWall();
 }
