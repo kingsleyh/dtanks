@@ -1,4 +1,4 @@
-module net.masterthought.dtanks.samples.staticbot;
+module net.masterthought.dtanks.samples.tracknshoot;
 
 import net.masterthought.dtanks.brainhelper;
 import net.masterthought.dtanks.bot.brain;
@@ -14,14 +14,14 @@ import std.random;
 import std.stdio;
 import std.range;
 
-class StaticBot : Brain {
+class TrackNShoot : Brain {
 
   mixin BrainHelper;
 
   SkinColor skinColor = SkinColor.orange;
 
    static this(){
-     Brain.add(new StaticBot());
+     Brain.add(new TrackNShoot());
    }
 
   override public Command tick(Sensor sensors){
@@ -49,7 +49,7 @@ class StaticBot : Brain {
   }
 
   override public string name(){
-    return "static_tank";
+    return "Track & Shoot";
   }
 
   override public SkinColor skin(){
