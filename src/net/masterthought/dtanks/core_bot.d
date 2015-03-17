@@ -25,7 +25,7 @@ class CoreBot {
  enum MAX_DELTA = 1.0/0.0;
 
   private Arena arena;
-  private Brain brain;
+  public Brain brain;
   public Radar radar;
   public Turret turret;
   private int ticks;
@@ -80,6 +80,9 @@ class CoreBot {
 
   public void reduceHealth(double reduceBy){
     this.health -= reduceBy;
+    if(this.health <= 0){
+      this.health = 0;
+    }
   }
 
   public bool isDead(){
@@ -121,7 +124,6 @@ class CoreBot {
   }
 
   public void executeCommand(Command command){
-    writeln(command);
 
     if(command.heading){
       this.heading = new NormalizedHeading().normalize(this.heading,command.heading, Heading.FULL_RANGE,Configuration().bot().turnStep);

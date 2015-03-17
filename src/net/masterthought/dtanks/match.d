@@ -26,6 +26,7 @@ class Match {
     this.ticks = 0;
     this.stopped = false;
     this.bots = [];
+    this.maxTicks = 6000;
  }
 
  public void setTeams(bool value){
@@ -107,7 +108,7 @@ private void preBotTick(CoreBot bot){
   }
 
 
-  writeln("explosions: ", this.explosions);
+  //writeln("explosions: ", this.explosions);
 
 
   this.ticks += 1;

@@ -85,7 +85,7 @@ radar.rotation(this.bot.radar.heading.toDegrees());
 auto dRadar = new Text("R: " ~ to!dstring(bot.radar.heading.toDegrees()),font,12);
     dRadar.position = Vector2f(x-50,y+136);
 
-  if(name == "SuperBot"){
+  if(name == "Keyboard"){
 
     // get other bots
     CoreBot[] otherBots = allBots.filter!(b => b != bot).array;

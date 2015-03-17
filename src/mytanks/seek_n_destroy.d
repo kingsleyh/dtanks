@@ -43,11 +43,9 @@ class SeeknDestroy : Brain {
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
 
-  writeln(maxSpeed);
-
    command.speed = reflection.distance > 200 ? maxSpeed : maxSpeed / 2.0;
 
-   writeln("refletion delta: ",reflection.heading.delta(sensors.turretHeading.radians).abs);
+   //writeln("refletion delta: ",reflection.heading.delta(sensors.turretHeading.radians).abs);
 
    if((reflection.heading.delta(sensors.turretHeading.radians)).abs < TURRET_FIRE_RANGE){
     command.fire(reflection.distance > 200 ? maxFirePower : minFirePower);

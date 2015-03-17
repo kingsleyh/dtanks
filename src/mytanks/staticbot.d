@@ -20,9 +20,9 @@ class StaticBot : Brain {
 
   SkinColor skinColor = SkinColor.orange;
 
-   //static this(){
-   //  Brain.add(new StaticBot());
-   //}
+   static this(){
+     Brain.add(new StaticBot());
+   }
 
   override public Command tick(Sensor sensors){
 
