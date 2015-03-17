@@ -40,10 +40,6 @@ private Reflection[] reflections;
     return this.bot.position;
   }
 
-  //public void setHeading(float value){
-  //   this.heading = new Heading(value);
-  //}
-
   public bool isEmpty(){
     return this.reflections.empty;
   }

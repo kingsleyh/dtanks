@@ -6,6 +6,8 @@ import net.masterthought.dtanks.guiwindow;
 import net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.corebot;
 
+import std.stdio;
+
 class Runner {
 
   private Match match;
@@ -29,6 +31,8 @@ public static addBrain(Brain brain){
 
    GuiWindow gui = new GuiWindow(this.match);
    gui.execute();
+
+writeln("match is now over");
 
   //match.start();
   }

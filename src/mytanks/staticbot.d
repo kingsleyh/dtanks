@@ -20,9 +20,9 @@ class StaticBot : Brain {
 
   SkinColor skinColor = SkinColor.orange;
 
-   static this(){
-     Brain.add(new StaticBot());
-   }
+   //static this(){
+   //  Brain.add(new StaticBot());
+   //}
 
   override public Command tick(Sensor sensors){
 
@@ -31,7 +31,7 @@ class StaticBot : Brain {
     Reflection reflection = reflections.front;
    skinColor = SkinColor.green;
    command.radarHeading = reflection.heading;
-   //command.turretHeading = sensors.radarHeading;
+   command.turretHeading = reflection.heading;
    command.heading = new Heading(reflection.heading.radians + Heading.ONE_DEGREE * 2);
    command.speed = 3;
 
@@ -40,11 +40,6 @@ class StaticBot : Brain {
     command.radarHeading = currentRadarHeadingPlusDegrees(5);
     skinColor = SkinColor.orange;
   }
-
-  //command.heading = reflection.heading;
-  // command.radarHeading = reflection.heading;
-  // command.turretHeading = reflection.heading;
-
 
     return command;
   }

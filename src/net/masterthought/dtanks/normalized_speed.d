@@ -36,44 +36,12 @@ private double enforceRange(double[] range, double value){
 auto s = range.reduce!(min,max);
 double min = s[0];
 double max = s[1];
-
-writeln("min: ", min);
-writeln("max: ", max);
-
   if(min <= value && value <  max){
-    writeln("first: ", value);
     return value;
   } else {
-    writeln("second: ", value);
     return value >= max ? max : min;
   }
 }
 
 }
 
-//void main(){
-
-//  NormalizedSpeed ns = new NormalizedSpeed();
-
-
-
-//    double r1 = 3;
-//    double r2 = 3;
-
-//    writeln("r1: ", r1);
-//    writeln("r2: ", r2);
-
-//    double s1 = ns.normalize(r1,r2,iota(-3.0,4.0).array,0.05);
-//    double s2 = ns.normalize(s1,r2,iota(-3.0,4.0).array,0.05);
-//    double s3 = ns.normalize(s2,r2,iota(-3.0,4.0).array,0.05);
-
-//    writeln(s1);
-//    writeln(s2);
-//    writeln(s3);
-
-
-
-
-
-
-//}

@@ -85,7 +85,7 @@ auto texture = new Texture();
         }
 
         if(this.match.finished()){
-          //window.close();
+          window.close();
         }
 
       this.match.incrementTicks();
