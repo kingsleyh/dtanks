@@ -8,13 +8,14 @@ import net.masterthought.dtanks.corebot;
 import net.masterthought.dtanks.gui.healthcolorcalculator;
 import net.masterthought.dtanks.heading;
 import net.masterthought.dtanks.gui.skins;
+import net.masterthought.dtanks.skincolor;
 
 class GuiBot : Drawable {
 
 Texture botBodyTexture;
 Texture turretTexture;
 Texture radarTexture;
-BotSkin[string] skin;
+BotSkin[SkinColor] skin;
 Font font;
 CoreBot bot;
 float x;
@@ -22,7 +23,7 @@ float y;
 string name;
 CoreBot[] allBots;
 
-this(BotSkin[string] skin,Font font, CoreBot bot, CoreBot[] allBots){
+this(BotSkin[SkinColor] skin,Font font, CoreBot bot, CoreBot[] allBots){
  this.skin = skin;
  this.botBodyTexture = skin[bot.getSkin()].tankBody;
  this.turretTexture = skin[bot.getSkin()].tankTurret;

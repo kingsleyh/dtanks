@@ -4,6 +4,7 @@ import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 import net.masterthought.dtanks.bot.radar;
 import net.masterthought.dtanks.runner;
+import net.masterthought.dtanks.skincolor;
 
 class Brain {
 
@@ -31,8 +32,8 @@ static add(Brain brain){
     return "no name";
   }
 
-  public string skin(){
-    return "blue";
+  public SkinColor skin(){
+    return SkinColor.blue;
   }
 
 

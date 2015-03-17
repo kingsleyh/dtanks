@@ -12,12 +12,12 @@ import net.masterthought.dtanks.gui.guishell;
 import net.masterthought.dtanks.gui.guiexplosion;
 import net.masterthought.dtanks.match;
 import net.masterthought.dtanks.gui.skins;
-
+import net.masterthought.dtanks.skincolor;
 
 class GuiWindow{
 
 private Match match;
-private BotSkin[string] skins;
+private BotSkin[SkinColor] skins;
 
 
 this(Match match){
@@ -32,9 +32,7 @@ settings.antialiasingLevel = 8;
  auto window = new RenderWindow(VideoMode(match.arena.width,match.arena.height),"DTanks", Window.Style.DefaultStyle, settings);
   window.setFramerateLimit(60);
 
-string[] availableSkins = ["black","blue","green","orange","pink","purple","purple2","red","white","yellow"];
-
-foreach(s; availableSkins){
+foreach(s; [__traits(allMembers, SkinColor)]){
 
   auto botBodyTexture = new Texture();
     if(!botBodyTexture.loadFromFile("resources/skins/" ~ s ~ "/body.png"))

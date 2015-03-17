@@ -6,6 +6,7 @@ import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 import net.masterthought.dtanks.heading;
+import net.masterthought.dtanks.skincolor;
 import dsfml.graphics;
 
 import std.random;
@@ -59,8 +60,8 @@ class KeyboardBot : Brain {
     return "Keyboard";
   }
 
-  override public string skin(){
-    return "green";
+  override public SkinColor skin(){
+    return SkinColor.green;
   }
 
 }

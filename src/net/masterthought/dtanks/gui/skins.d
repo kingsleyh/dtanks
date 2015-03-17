@@ -7,3 +7,4 @@ struct BotSkin{
   Texture tankTurret;
   Texture tankRadar;
 }
+
