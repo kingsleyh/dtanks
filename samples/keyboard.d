@@ -1,5 +1,6 @@
-module net.masterthought.dtanks.samples.superbot;
+module net.masterthought.dtanks.samples.keyboardbot;
 
+import net.masterthought.dtanks.brainhelper;
 import net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.bot.sensor;
@@ -10,21 +11,13 @@ import dsfml.graphics;
 import std.random;
 import std.stdio;
 
-class SuperBot : Brain {
+class KeyboardBot : Brain {
 
    static this(){
-     Brain.add(new SuperBot());
+     Brain.add(new KeyboardBot());
    }
 
-  override public Command tick(Sensor sensors){
-    //command.speed = 3;
-    //command.heading = new Heading(Heading.NE);
-    //command.turretHeading = new Heading(Heading.N);
-
-    //writeln(sensors);
-    //writeln(sensors.position.onWall());
-   writeln("superbot heading: ", sensors.heading.toDegrees());
-
+ override public Command tick(Sensor sensors){
     if(sensors.buttonDown(Keyboard.Key.Left)){
      command.turretHeading = new Heading(sensors.turretHeading.radians - Heading.ONE_DEGREE * 3);
     } else if(sensors.buttonDown(Keyboard.Key.Right)){
@@ -63,7 +56,7 @@ class SuperBot : Brain {
   }
 
   override public string name(){
-    return "SuperBot";
+    return "Keyboard";
   }
 
   override public string skin(){

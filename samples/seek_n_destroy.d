@@ -1,5 +1,8 @@
 module net.masterthought.dtanks.samples.seekndestroy;
 
+
+import net.masterthought.dtanks.brainhelper;
+
 import net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.bot.sensor;
@@ -15,6 +18,8 @@ import std.array;
 
 class SeeknDestroy : Brain {
 
+  mixin BrainHelper;
+
   static this(){
      Brain.add(new SeeknDestroy());
    }
@@ -25,25 +30,15 @@ class SeeknDestroy : Brain {
 
 
   override public Command tick(Sensor sensors){
-
-  //getRadarLock();
-
- //seekLock(sensors);
-
      if(getRadarLock(sensors)){
         destroyLock(lock, sensors);
      } else {
       seekLock(sensors);
      }
-
-
     return command;
   }
 
  public void destroyLock(Reflection reflection, Sensor sensors){
-
-writeln("target: ", reflection.heading.toDegrees());
-
    command.heading = reflection.heading;
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
@@ -57,12 +52,10 @@ writeln("target: ", reflection.heading.toDegrees());
  }
 
   public void seekLock(Sensor sensors){
-    writeln("seeking lock");
-    if(sensors.position.onWall()){
-      writeln("ON WALL--------------");
-      desiredHeading = new Heading(sensors.heading.radians + Heading.ONE_DEGREE * 2);
+    if(isOnWall){
+      desiredHeading = currentHeadingPlusDegrees(2);
     }
-      command.radarHeading = new Heading(sensors.radar.heading.radians + Heading.ONE_DEGREE * 3);
+      command.radarHeading = currentRadarHeadingPlusDegrees(3);
     command.speed = 1;
     if(desiredHeading){
       command.heading = desiredHeading;
@@ -71,22 +64,19 @@ writeln("target: ", reflection.heading.toDegrees());
   }
 
   public bool getRadarLock(Sensor sensors){
-    writeln("looking for bots: ", sensors.radar.getReflections());
     string lockedOnName;
     bool gotLock = false;
     if(lockedOnName){
       gotLock = true;
-      Reflection[] res = sensors.radar.getReflections().filter!(r => r.name == lockedOnName).array;
-      lock = res.empty ? sensors.radar.getReflections().front : res.front;
+      Reflection[] res = findReflectionByName(lockedOnName);
+      lock = res.empty ? reflections.front : res.front;
     } else {
-      if(!sensors.radar.getReflections().empty){
+      if(hasReflections){
              gotLock = true;
-          lock =sensors.radar.getReflections().front;
+          lock = reflections.front;
         }
     }
     if(gotLock){
-      writeln("here I am ");
-      writeln("name: ", lock.name);
       lockedOnName = lock.name;
     }
     return gotLock;

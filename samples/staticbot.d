@@ -1,12 +1,12 @@
 module net.masterthought.dtanks.samples.staticbot;
 
+import net.masterthought.dtanks.brainhelper;
 import net.masterthought.dtanks.bot.brain;
 import net.masterthought.dtanks.arena;
 import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 import net.masterthought.dtanks.heading;
 import dsfml.graphics;
-
 
 import std.random;
 import std.stdio;

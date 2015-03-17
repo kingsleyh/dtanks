@@ -18,12 +18,12 @@ static add(Brain brain){
   Runner.addBrain(brain);
 }
 
-// is this used? could it be private then used in core_bot to prevent having to pass sensors into sub methods within a users tank brain impl?
   public void setSensors(Sensor sensors){
     this.sensors = sensors;
   }
 
   public Command tick(Sensor sensors){
+      this.sensors = sensors;
      return command;
   }
 
