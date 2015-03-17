@@ -157,6 +157,7 @@ class CoreBot {
     sensor.radarHeading = radar.heading;
     sensor.turretHeading = turret.heading;
     sensor.guiWindow = guiWindow;
+    sensor.arena = this.arena;
     return sensor;
   }
 }

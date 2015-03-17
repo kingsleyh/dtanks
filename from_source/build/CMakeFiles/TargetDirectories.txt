@@ -1,6 +1,0 @@
-/Users/hendriki/stuff/dtanks/from_source/build/src/SFML/Audio/CMakeFiles/sfml-audio.dir
-/Users/hendriki/stuff/dtanks/from_source/build/CMakeFiles/SFML.dir
-/Users/hendriki/stuff/dtanks/from_source/build/src/SFML/Network/CMakeFiles/sfml-network.dir
-/Users/hendriki/stuff/dtanks/from_source/build/src/SFML/Window/CMakeFiles/sfml-window.dir
-/Users/hendriki/stuff/dtanks/from_source/build/src/SFML/System/CMakeFiles/sfml-system.dir
-/Users/hendriki/stuff/dtanks/from_source/build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir
