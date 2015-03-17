@@ -14,7 +14,7 @@ import std.stdio;
 
 class KeyboardBot : Brain {
 
-    SkinColor skinColor = SkinColor.blue;
+    SkinColor skinColor = SkinColor.red;
 
    static this(){
      Brain.add(new KeyboardBot());

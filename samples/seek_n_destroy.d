@@ -9,7 +9,6 @@ import net.masterthought.dtanks.bot.sensor;
 import net.masterthought.dtanks.bot.command;
 import net.masterthought.dtanks.heading;
 import net.masterthought.dtanks.bot.radar;
-import net.masterthought.dtanks.skincolor;
 import dsfml.graphics;
 
 import std.random;
@@ -43,12 +42,15 @@ class SeeknDestroy : Brain {
    command.heading = reflection.heading;
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
-   command.speed = reflection.distance > 200 ? 2 : 2 / 2.0;
+
+  writeln(maxSpeed);
+
+   command.speed = reflection.distance > 200 ? maxSpeed : maxSpeed / 2.0;
 
    writeln("refletion delta: ",reflection.heading.delta(sensors.turretHeading.radians).abs);
 
    if((reflection.heading.delta(sensors.turretHeading.radians)).abs < TURRET_FIRE_RANGE){
-    command.fire(reflection.distance > 200 ? 5 : 1);
+    command.fire(reflection.distance > 200 ? maxFirePower : minFirePower);
    }
  }
 

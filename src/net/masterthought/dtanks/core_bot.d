@@ -140,7 +140,7 @@ class CoreBot {
     }
 
     if(command.radarHeading){
-      this.radar.heading = command.radarHeading;
+      this.radar.heading = new NormalizedHeading().normalize(this.radar.heading, command.radarHeading, Heading.FULL_RANGE, Configuration().radar().turnStep);
     }
 
   }
