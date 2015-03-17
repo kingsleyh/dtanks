@@ -32,11 +32,15 @@ class StaticBot : Brain {
    skinColor = SkinColor.green;
    command.radarHeading = reflection.heading;
    command.turretHeading = reflection.heading;
-   command.heading = new Heading(reflection.heading.radians + Heading.ONE_DEGREE * 2);
+   command.heading = new Heading(reflection.heading.radians);
    command.speed = 3;
-
+   if(reflection.distance < 200){
+     command.speed = 0;
+     command.firePower = 1;
+   }
   } else {
     command.speed = 0;
+    command.firePower = 0;
     command.radarHeading = currentRadarHeadingPlusDegrees(5);
     skinColor = SkinColor.orange;
   }

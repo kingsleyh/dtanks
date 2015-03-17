@@ -1,8 +1,9 @@
 {
-  "maxTicks":7000,
-  "headless":true,
+  "maxTicks":10000,
+  "headless":false,
   "arena":{
      "width":1200,
     "height":700
-  }
+  },
+  "ansi":true
 }

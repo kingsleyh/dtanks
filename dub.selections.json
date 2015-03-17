@@ -1,6 +1,7 @@
 {
 	"fileVersion": 1,
 	"versions": {
-		"dsfml": "~master"
+		"dsfml": "~master",
+		"rainbow": "~master"
 	}
 }

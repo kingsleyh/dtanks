@@ -5,6 +5,7 @@
 	"authors": ["kings"],
 	"lflags" : ["-L/Users/hendriki/stuff/dtanks/DSFML-Current/lib"],
 	"dependencies": {
-          "dsfml:graphics": "~master"
+          "dsfml:graphics": "~master",
+          "rainbow":"~master"
 	}
 }

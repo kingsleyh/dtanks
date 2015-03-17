@@ -14,7 +14,7 @@ import std.algorithm;
 class Match {
 
  public Arena arena;
- private Properties props;
+ public Properties props;
  private int maxTicks;
  private bool teams;
  public int ticks;
