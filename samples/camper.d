@@ -27,8 +27,7 @@ class Camper : Brain {
    }
 
   override public Command tick(Sensor sensors){
-    this.sensors = sensors;
-    hideInCorners(sensors);
+    hideInCorners();
     //Reflection[] targets = nearestTarget(sensors);
 
     return command;
@@ -46,7 +45,7 @@ class Camper : Brain {
 
 //}
 
-public void hideInCorners(Sensor sensors){
+public void hideInCorners(){
 
 Point[] corners = [
   Point(sensors.arena.width,0,sensors.arena),
@@ -55,19 +54,12 @@ Point[] corners = [
   Point(0,0,sensors.arena)
 ];
 
- //enum Corners{
- //   NE = Point(this.sensors.arena.width,0,this.sensors.arena),
- //   //SE = Point(sensors.arena.width,sensors.arena.height),
- //   //SW = Point(0,sensors.arena.height),
- //   NW = Point(0,0)
- //}
-
   if(reachedTickInterval(600)){
-    moveToCorner(randomSample(corners,1).front, sensors);
+    moveToCorner(randomSample(corners,1).front);
   }
 }
 
-public void moveToCorner(Point corner,Sensor sensors){
+public void moveToCorner(Point corner){
  command.speed = maxSpeed;
  command.heading = sensors.position.heading(corner);
 }

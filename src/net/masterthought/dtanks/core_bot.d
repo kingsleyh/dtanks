@@ -120,6 +120,7 @@ class CoreBot {
   }
 
   public void tickBrain(){
+     brain.setSensors(sensors());
     executeCommand(brain.tick(sensors()));
   }
 
