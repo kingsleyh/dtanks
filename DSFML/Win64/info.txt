@@ -1,0 +1,4 @@
+Compile date : August 6th, 2014
+Compiler: GCC 4.9.1
+OS: Windows 7
+Type: 64bit
