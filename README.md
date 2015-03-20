@@ -51,7 +51,7 @@ clone the dtanks repository from github:
   
 Set up your DSFML dependency in the dub.json. Edit dub.json and point it to the correct DSFML library for your platform e.g:
 
-    "lflags" : ["-L/Users/kings/projects/dtanks/DSFM/OSX/lib"],
+    "lflags" : ["-L/Users/kings/projects/dtanks/DSFML/OSX/lib"],
 
 To start the game run:
 
@@ -89,7 +89,18 @@ Any tanks you put in dtanks/src/mytanks will be included in the game.
 
 ## DTanks Documentation
 
-coming soon
+coming soon - in the meantime these classes are useful to look at:
+
+* [src/net/masterthought/dtanks/bot/sensor](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/bot/sensor.d)
+* [src/net/masterthought/dtanks/bot/command](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/bot/command.d)
+* [src/net/masterthought/dtanks/bot/radar](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/bot/radar.d)
+* [src/net/masterthought/heading](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/heading.d)
+* [src/net/masterthought/point](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/point.d)
+
+Plus the helper class for some simple helper methods for your tank brain:
+
+* [src/net/masterthought/dtanks/brain_helper](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/brain_helper.d)
+
 
 ## DTanks API
 
