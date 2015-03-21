@@ -22,7 +22,7 @@ alt="DTanks Demo" width="640" height="480" border="10" /></a>
 
 ## Getting Started
 
-See the getting started guide.
+See the getting started guide. (Coming soon)
 
 ## Influences
 
@@ -43,6 +43,8 @@ Most of the credit of this project must be given to [Adam Williams](https://gith
 The [DSFML](https://github.com/Jebbs/DSFML) library is used to render the game in 2D. There are pre-built libraries included for OSX, Linux and Windows.
 
 ## Quick Start
+
+See a detailed installation and running guide that covers Linux, Windows and OSX here [Installation and Running](https://github.com/masterthought/dtanks/wiki/Installation-and-Running) 
 
 clone the dtanks repository from github:
 
