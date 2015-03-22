@@ -22,7 +22,7 @@ alt="DTanks Demo" width="640" height="480" border="10" /></a>
 
 ## Getting Started
 
-See the getting started guide. (Coming soon)
+See the [Getting Started Guide](https://github.com/masterthought/dtanks/wiki/Getting-Started)
 
 ## Influences
 
