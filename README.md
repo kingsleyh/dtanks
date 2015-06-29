@@ -1,3 +1,5 @@
+# PLEASE NOTE - This project is not being actively maintained at the moment - I am taking a break - not sure when I will return.
+
 # DTanks - Robot Tank Battle Game
 
 Dtanks is a robot tank battle game for D programmers. Players program the brain of a tank and then send their tank+brain into battle with other tanks. 
