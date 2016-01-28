@@ -14,17 +14,13 @@ The rules are simple. The last tank still alive is the winner. If there are mult
 
 The gameplay is very straight forward. Each tank has a **base**, **turret** and **radar**, each of which rotate independently. The base moves the tank, the turret has a gun mounted on it which can fire at other tanks. The radar detects other tanks in its field of vision.
 
-## Example Battle
+## Take a look
 
-This is a short clip of what a battle looks like:
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=UPBqwOgGlVY
-" target="_blank"><img src="http://img.youtube.com/vi/UPBqwOgGlVY/0.jpg" 
-alt="RTanque Demo" width="640" height="480" border="10" /></a>
+![D Tanks](https://github.com/kingsleyh/dtanks/raw/master/.README/tanks_fight.png)
 
 ## Getting Started
 
-See the [Getting Started Guide](https://github.com/masterthought/dtanks/wiki/Getting-Started)
+See the [Getting Started Guide](https://github.com/kingsleyh/dtanks/wiki/Getting-Started)
 
 ## Influences
 
@@ -95,15 +91,15 @@ Any tanks you put in dtanks/src/mytanks will be included in the game.
 
 coming soon - in the meantime these classes are useful to look at:
 
-* [src/net/masterthought/dtanks/bot/sensor](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/bot/sensor.d)
-* [src/net/masterthought/dtanks/bot/command](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/bot/command.d)
-* [src/net/masterthought/dtanks/bot/radar](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/bot/radar.d)
-* [src/net/masterthought/heading](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/heading.d)
-* [src/net/masterthought/point](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/point.d)
+* [src/net/masterthought/dtanks/bot/sensor](https://github.com/kingsleyh/dtanks/blob/master/src/net/masterthought/dtanks/bot/sensor.d)
+* [src/net/masterthought/dtanks/bot/command](https://github.com/kingsleyh/dtanks/blob/master/src/net/masterthought/dtanks/bot/command.d)
+* [src/net/masterthought/dtanks/bot/radar](https://github.com/kingsleyh/dtanks/blob/master/src/net/masterthought/dtanks/bot/radar.d)
+* [src/net/masterthought/heading](https://github.com/kingsleyh/dtanks/blob/master/src/net/masterthought/dtanks/heading.d)
+* [src/net/masterthought/point](https://github.com/kingsleyh/dtanks/blob/master/src/net/masterthought/dtanks/point.d)
 
 Plus the helper class for some simple helper methods for your tank brain:
 
-* [src/net/masterthought/dtanks/brain_helper](https://github.com/masterthought/dtanks/blob/master/src/net/masterthought/dtanks/brain_helper.d)
+* [src/net/masterthought/dtanks/brain_helper](https://github.com/kingsleyh/dtanks/blob/master/src/net/masterthought/dtanks/brain_helper.d)
 
 
 ## DTanks API
