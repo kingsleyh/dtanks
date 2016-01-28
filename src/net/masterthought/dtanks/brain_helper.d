@@ -6,6 +6,7 @@ import std.random;
 import std.stdio;
 import std.range;
 import std.array;
+import std.algorithm;
 
 import net.masterthought.dtanks.configuration;
 

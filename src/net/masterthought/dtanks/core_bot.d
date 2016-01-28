@@ -78,7 +78,7 @@ class CoreBot {
   //  this.firePower = value;
   //}
 
-  public void reduceHealth(double reduceBy){
+  public void reduceHealth(int reduceBy){
     this.health -= reduceBy;
     if(this.health <= 0){
       this.health = 0;
@@ -96,7 +96,7 @@ class CoreBot {
     if(this.gunEnergy <= 0){
       this.firePower = 0;
     } else {
-      this.gunEnergy -= (this.firePower ^^ 1.5) * 10;
+      this.gunEnergy -= cast(int) (this.firePower ^^ 1.5) * 10;
     }
     this.gunEnergy += 1;
     if(this.gunEnergy > 10){

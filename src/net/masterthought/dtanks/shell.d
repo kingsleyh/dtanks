@@ -47,7 +47,7 @@ class Shell{
    foreach(bot ; otherBots){
     if(bot.position.withinRadius(this.position, 19)){
       this.setDead();
-      double damage = this.firePower ^^ 1.4;
+      int damage = cast(int) this.firePower ^^ 1.4;
       bot.reduceHealth(damage);
       if(bot.isDead()){
         explosions ~= new Explosion(bot.position);
