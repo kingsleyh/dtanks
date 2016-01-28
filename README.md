@@ -1,3 +1,5 @@
+# PLEASE NOTE - This project is not being actively maintained at the moment - I am taking a break - not sure when I will return.
+
 # DTanks - Robot Tank Battle Game
 
 Dtanks is a robot tank battle game for D programmers. Players program the brain of a tank and then send their tank+brain into battle with other tanks. 
@@ -16,9 +18,9 @@ The gameplay is very straight forward. Each tank has a **base**, **turret** and 
 
 This is a short clip of what a battle looks like:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=t-Z-FJ-MoMo
-" target="_blank"><img src="http://img.youtube.com/vi/t-Z-FJ-MoMo/0.jpg" 
-alt="DTanks Demo" width="640" height="480" border="10" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=UPBqwOgGlVY
+" target="_blank"><img src="http://img.youtube.com/vi/UPBqwOgGlVY/0.jpg" 
+alt="RTanque Demo" width="640" height="480" border="10" /></a>
 
 ## Getting Started
 
